@@ -85,15 +85,15 @@ export function ColorExplorer() {
     <div className="min-h-screen bg-background flex">
       {/* Sidebar */}
       <ColorSidebar
-        selectedCategory={selectedCategory}
-        selectedColor={selectedColor}
         searchQuery={searchQuery}
+        selectedCategory={selectedCategory}
+        selectedChannel={selectedChannel}
+        selectedColor={selectedColor}
+        selectedVariant={selectedVariant}
+        sortOrder={sortOrder}
         onCategoryChange={setSelectedCategory}
         onColorSelect={handleColorSelect}
         onSearchChange={setSearchQuery}
-        selectedVariant={selectedVariant}
-        selectedChannel={selectedChannel}
-        sortOrder={sortOrder}
       />
 
       {/* Main Canvas Area */}
@@ -165,10 +165,10 @@ export function ColorExplorer() {
               )}
 
               <button
-                type="button"
-                onClick={() => setIsCommandPaletteOpen(true)}
                 className="p-2 rounded-md hover:bg-background-secondary border border-border"
                 title="Command Palette (⌘ + K)"
+                type="button"
+                onClick={() => setIsCommandPaletteOpen(true)}
               >
                 <Command className="w-4 h-4" />
               </button>
@@ -178,8 +178,8 @@ export function ColorExplorer() {
 
         {/* Canvas */}
         <ColorCanvas
-          selectedColor={selectedColor}
           selectedChannel={selectedChannel}
+          selectedColor={selectedColor}
           selectedVariant={selectedVariant}
           onCopy={handleCopy}
         />
@@ -188,15 +188,15 @@ export function ColorExplorer() {
       {/* Command Palette */}
       <CommandPalette
         isOpen={isCommandPaletteOpen}
-        onClose={() => setIsCommandPaletteOpen(false)}
-        onColorSelect={handleColorSelect}
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
         recentColors={recentColors}
+        searchQuery={searchQuery}
         selectedChannel={selectedChannel}
         selectedVariant={selectedVariant}
-        onCopy={handleCopy}
         onCategoryChange={setSelectedCategory}
+        onClose={() => setIsCommandPaletteOpen(false)}
+        onColorSelect={handleColorSelect}
+        onCopy={handleCopy}
+        onSearchChange={setSearchQuery}
       />
     </div>
   )

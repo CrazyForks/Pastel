@@ -3,14 +3,14 @@ import * as React from 'react'
 import { CopyButton } from '../../ui/CopyButton'
 
 interface ColorCardProps {
+  aspectRatio?: string
   colorName: string
-  variants: any
+  labelContent?: React.ReactNode
   onClick: () => void
   onCopy?: (value: string) => void
   selectedChannel: 'oklch' | 'srgb' | 'p3'
   showLabels?: boolean
-  aspectRatio?: string
-  labelContent?: React.ReactNode
+  variants: any
 }
 
 export const ColorCard: React.FC<ColorCardProps> = ({
@@ -46,8 +46,8 @@ export const ColorCard: React.FC<ColorCardProps> = ({
   return (
     <div className="space-y-2">
       <button
-        type="button"
         className="w-full text-left group"
+        type="button"
         onClick={onClick}
       >
         <div
@@ -92,8 +92,8 @@ export const ColorCard: React.FC<ColorCardProps> = ({
             <div className="flex items-center justify-between">
               <span className="text-xs font-medium">Light:</span>
               <CopyButton
-                value={getColorValue(variants, 'light')}
                 label="Copy"
+                value={getColorValue(variants, 'light')}
                 onCopy={onCopy}
               />
             </div>
@@ -103,8 +103,8 @@ export const ColorCard: React.FC<ColorCardProps> = ({
             <div className="flex items-center justify-between">
               <span className="text-xs font-medium">Dark:</span>
               <CopyButton
-                value={getColorValue(variants, 'dark')}
                 label="Copy"
+                value={getColorValue(variants, 'dark')}
                 onCopy={onCopy}
               />
             </div>

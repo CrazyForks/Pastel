@@ -19,15 +19,15 @@ import { microReboundPreset, softSpringPreset } from '../../constants/spring'
 import { cn } from '../../utils/cn'
 
 interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive'
-  size?: 'sm' | 'md' | 'lg'
-  disabled?: boolean
-  loading?: boolean
+  [key: string]: any
   children: React.ReactNode
+  className?: string
+  disabled?: boolean
   icon?: 'left' | 'right'
   iconElement?: React.ReactNode
-  className?: string
-  [key: string]: any
+  loading?: boolean
+  size?: 'sm' | 'md' | 'lg'
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive'
 }
 
 function Button({
@@ -69,9 +69,9 @@ function Button({
     <motion.button
       className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`}
       disabled={disabled || loading}
+      transition={microReboundPreset}
       whileHover={!disabled && !loading ? { y: -1, scale: 1.02 } : {}}
       whileTap={!disabled && !loading ? { scale: 0.98 } : {}}
-      transition={microReboundPreset}
       {...props}
     >
       {loading && <Loader2 className={`${iconSizes[size]} animate-spin`} />}
@@ -110,9 +110,9 @@ export function ButtonExamples() {
   return (
     <div className="card p-8 space-y-12">
       <motion.div
+        animate={{ opacity: 1, y: 0 }}
         className="text-center max-w-3xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
         transition={softSpringPreset}
       >
         <h4 className="heading-3 text-text mb-4">Button System</h4>
@@ -127,9 +127,9 @@ export function ButtonExamples() {
       <div className="space-y-12">
         {/* Button Variants */}
         <motion.section
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ ...softSpringPreset, delay: 0.1 }}
         >
           <div className="flex items-center gap-4">
@@ -151,9 +151,9 @@ export function ButtonExamples() {
 
         {/* Color Palette Integration */}
         <motion.section
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ ...softSpringPreset, delay: 0.2 }}
         >
           <div className="flex items-center gap-4">
@@ -188,9 +188,9 @@ export function ButtonExamples() {
 
         {/* Button Sizes */}
         <motion.section
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ ...softSpringPreset, delay: 0.3 }}
         >
           <div className="flex items-center gap-4">
@@ -202,13 +202,13 @@ export function ButtonExamples() {
             typography scales.
           </p>
           <div className="flex flex-wrap items-center gap-6">
-            <Button variant="primary" size="sm">
+            <Button size="sm" variant="primary">
               Small Button
             </Button>
-            <Button variant="primary" size="md">
+            <Button size="md" variant="primary">
               Medium Button
             </Button>
-            <Button variant="primary" size="lg">
+            <Button size="lg" variant="primary">
               Large Button
             </Button>
           </div>
@@ -216,9 +216,9 @@ export function ButtonExamples() {
 
         {/* Interactive States */}
         <motion.section
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ ...softSpringPreset, delay: 0.4 }}
         >
           <div className="flex items-center gap-4">
@@ -237,15 +237,15 @@ export function ButtonExamples() {
               </div>
               <div className="space-y-3">
                 <h6 className="text-sm font-semibold text-text">Disabled</h6>
-                <Button variant="primary" disabled>
+                <Button disabled variant="primary">
                   Disabled Button
                 </Button>
               </div>
               <div className="space-y-3">
                 <h6 className="text-sm font-semibold text-text">Loading</h6>
                 <Button
-                  variant="primary"
                   loading={isLoading}
+                  variant="primary"
                   onClick={handleLoadingDemo}
                 >
                   {isLoading ? 'Processing...' : 'Start Loading'}
@@ -253,7 +253,7 @@ export function ButtonExamples() {
               </div>
               <div className="space-y-3">
                 <h6 className="text-sm font-semibold text-text">Focus</h6>
-                <Button variant="primary" className="focus:ring-4">
+                <Button className="focus:ring-4" variant="primary">
                   Focus Me
                 </Button>
               </div>
@@ -263,9 +263,9 @@ export function ButtonExamples() {
 
         {/* Icon Integration */}
         <motion.section
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ ...softSpringPreset, delay: 0.5 }}
         >
           <div className="flex items-center gap-4">
@@ -283,30 +283,30 @@ export function ButtonExamples() {
               </h6>
               <div className="flex flex-wrap gap-4">
                 <Button
-                  variant="primary"
                   icon="left"
                   iconElement={<Plus className="w-4 h-4" />}
+                  variant="primary"
                 >
                   Add Item
                 </Button>
                 <Button
-                  variant="secondary"
                   icon="left"
                   iconElement={<Download className="w-4 h-4" />}
+                  variant="secondary"
                 >
                   Download
                 </Button>
                 <Button
-                  variant="outline"
                   icon="left"
                   iconElement={<Settings className="w-4 h-4" />}
+                  variant="outline"
                 >
                   Settings
                 </Button>
                 <Button
-                  variant="destructive"
                   icon="left"
                   iconElement={<Trash2 className="w-4 h-4" />}
+                  variant="destructive"
                 >
                   Delete
                 </Button>
@@ -319,8 +319,8 @@ export function ButtonExamples() {
               </h6>
               <div className="flex flex-wrap gap-4">
                 <Button
-                  variant={likedButtons.has('like1') ? 'primary' : 'outline'}
                   icon="left"
+                  variant={likedButtons.has('like1') ? 'primary' : 'outline'}
                   iconElement={
                     <Heart
                       className={cn(
@@ -334,16 +334,16 @@ export function ButtonExamples() {
                   {likedButtons.has('like1') ? 'Liked' : 'Like'}
                 </Button>
                 <Button
-                  variant="ghost"
                   icon="left"
                   iconElement={<Share2 className="w-4 h-4" />}
+                  variant="ghost"
                 >
                   Share
                 </Button>
                 <Button
-                  variant="secondary"
                   icon="right"
                   iconElement={<CheckCircle className="w-4 h-4" />}
+                  variant="secondary"
                 >
                   Complete
                 </Button>
@@ -354,9 +354,9 @@ export function ButtonExamples() {
 
         {/* Real-world Examples */}
         <motion.section
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ ...softSpringPreset, delay: 0.6 }}
         >
           <div className="flex items-center gap-4">
@@ -387,22 +387,22 @@ export function ButtonExamples() {
               </h6>
               <div className="flex flex-wrap gap-3">
                 <Button
-                  variant="outline"
-                  size="sm"
                   icon="left"
                   iconElement={<Heart className="w-4 h-4" />}
+                  size="sm"
+                  variant="outline"
                 >
                   Like
                 </Button>
                 <Button
-                  variant="outline"
-                  size="sm"
                   icon="left"
                   iconElement={<Share2 className="w-4 h-4" />}
+                  size="sm"
+                  variant="outline"
                 >
                   Share
                 </Button>
-                <Button variant="primary" size="sm">
+                <Button size="sm" variant="primary">
                   View Details
                 </Button>
               </div>
@@ -422,14 +422,14 @@ export function ButtonExamples() {
                 </div>
                 <div className="flex gap-2">
                   <Button
-                    variant="ghost"
-                    size="sm"
                     icon="left"
                     iconElement={<X className="w-4 h-4" />}
+                    size="sm"
+                    variant="ghost"
                   >
                     Cancel
                   </Button>
-                  <Button variant="destructive" size="sm">
+                  <Button size="sm" variant="destructive">
                     Confirm
                   </Button>
                 </div>
@@ -440,9 +440,9 @@ export function ButtonExamples() {
 
         {/* Implementation Guide */}
         <motion.section
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ ...softSpringPreset, delay: 0.7 }}
         >
           <div className="flex items-center gap-4">

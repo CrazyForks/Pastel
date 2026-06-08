@@ -57,16 +57,16 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left content */}
           <m.div
+            animate={{ opacity: 1, y: 0 }}
             className="space-y-8 text-center lg:text-left"
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
             transition={Spring.smooth(0.8)}
           >
             <div className="space-y-4">
               <m.div
+                animate={{ opacity: 1, scale: 1 }}
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium"
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
                 transition={Spring.snappy(0.5)}
                 whileHover={{ scale: 1.05 }}
               >
@@ -75,9 +75,9 @@ export function Hero() {
               </m.div>
 
               <m.h1
+                animate={{ opacity: 1, y: 0 }}
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
                 transition={Spring.smooth(0.8, 0.1)}
               >
                 A thoughtfully crafted
@@ -89,9 +89,9 @@ export function Hero() {
               </m.h1>
 
               <m.p
+                animate={{ opacity: 1, y: 0 }}
                 className="text-lg sm:text-xl text-text-secondary max-w-lg mx-auto lg:mx-0"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
                 transition={Spring.smooth(0.8, 0.2)}
               >
                 Pastel provides a comprehensive color palette designed for
@@ -102,9 +102,9 @@ export function Hero() {
 
             {/* Feature highlights */}
             <m.div
+              animate={{ opacity: 1, y: 0 }}
               className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-md mx-auto lg:max-w-none lg:mx-0"
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
               transition={Spring.smooth(0.8, 0.3)}
             >
               {[
@@ -134,17 +134,17 @@ export function Hero() {
                 },
               ].map((feature) => (
                 <m.div
-                  key={feature.title}
+                  animate={{ opacity: 1, y: 0 }}
                   className="flex items-start gap-3 justify-center sm:justify-start"
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  key={feature.title}
                   transition={Spring.smooth(0.5, feature.delay)}
                   whileHover={{ scale: 1.02 }}
                 >
                   <m.div
                     className={`p-2 rounded-lg ${feature.bg} ${feature.text}`}
-                    whileHover={{ scale: 1.1 }}
                     transition={microReboundPreset}
+                    whileHover={{ scale: 1.1 }}
                   >
                     <feature.icon className="w-5 h-5" />
                   </m.div>
@@ -162,36 +162,36 @@ export function Hero() {
 
             {/* CTA buttons */}
             <m.div
+              animate={{ opacity: 1, y: 0 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
               transition={Spring.smooth(0.8, 0.7)}
             >
               <m.a
-                href="#installation"
                 className="group inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium rounded-full bg-accent text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent shadow-lg shadow-accent/25"
+                href="#installation"
+                transition={microReboundPreset}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
-                transition={microReboundPreset}
               >
                 Get Started
                 <m.div
                   className="w-4 h-4"
-                  whileHover={{ x: 2 }}
                   transition={microReboundPreset}
+                  whileHover={{ x: 2 }}
                 >
                   <ArrowRight className="w-4 h-4" />
                 </m.div>
               </m.a>
 
               <m.a
-                href={pkg.repo.url}
                 className="inline-flex items-center justify-center gap-2 hover:bg-background-tertiary px-6 py-3 text-base font-medium rounded-full bg-background-secondary text-text border border-border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border"
+                href={pkg.repo.url}
+                transition={microReboundPreset}
+                whileTap={{ scale: 0.98 }}
                 whileHover={{
                   scale: 1.05,
                 }}
-                whileTap={{ scale: 0.98 }}
-                transition={microReboundPreset}
               >
                 <svg
                   className="w-4 h-4"
@@ -207,70 +207,70 @@ export function Hero() {
 
           {/* Right content - Color showcase */}
           <m.div
+            animate={{ opacity: 1, scale: 1 }}
             className="relative order-first lg:order-last"
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
             transition={Spring.smooth(1, 0.2)}
           >
             <div className="relative grid grid-cols-2 gap-4 sm:gap-6 max-w-sm mx-auto lg:max-w-none">
               {/* Color cards using project colors */}
               <m.div
+                animate={{ opacity: 1, x: 0 }}
                 className="space-y-4"
                 initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
                 transition={Spring.smooth(0.8, 0.4)}
               >
                 <m.div
                   className="aspect-square rounded-2xl bg-gradient-to-br from-pink to-pink-dark shadow-lg shadow-pink/25"
                   style={{ rotate: -6 }}
+                  transition={microReboundPreset}
                   whileHover={{
                     rotate: -3,
                     scale: 1.05,
                     boxShadow:
                       '0 25px 50px -12px rgba(var(--color-pink-rgb), 0.4)',
                   }}
-                  transition={microReboundPreset}
                 />
                 <m.div
                   className="aspect-square rounded-2xl bg-gradient-to-br from-blue to-blue-dark shadow-lg shadow-blue/25"
                   style={{ rotate: 3 }}
+                  transition={microReboundPreset}
                   whileHover={{
                     rotate: 6,
                     scale: 1.05,
                     boxShadow:
                       '0 25px 50px -12px rgba(var(--color-blue-rgb), 0.4)',
                   }}
-                  transition={microReboundPreset}
                 />
               </m.div>
 
               <m.div
+                animate={{ opacity: 1, x: 0 }}
                 className="space-y-4 mt-8"
                 initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
                 transition={Spring.smooth(0.8, 0.6)}
               >
                 <m.div
                   className="aspect-square rounded-2xl bg-gradient-to-br from-purple to-purple-dark shadow-lg shadow-purple/25"
                   style={{ rotate: 6 }}
+                  transition={microReboundPreset}
                   whileHover={{
                     rotate: 3,
                     scale: 1.05,
                     boxShadow:
                       '0 25px 50px -12px rgba(var(--color-purple-rgb), 0.4)',
                   }}
-                  transition={microReboundPreset}
                 />
                 <m.div
                   className="aspect-square rounded-2xl bg-gradient-to-br from-green to-green-dark shadow-lg shadow-green/25"
                   style={{ rotate: -3 }}
+                  transition={microReboundPreset}
                   whileHover={{
                     rotate: -6,
                     scale: 1.05,
                     boxShadow:
                       '0 25px 50px -12px rgba(var(--color-green-rgb), 0.4)',
                   }}
-                  transition={microReboundPreset}
                 />
               </m.div>
 
@@ -304,9 +304,9 @@ export function Hero() {
 
             {/* Stats */}
             <m.div
+              animate={{ opacity: 1, y: 0 }}
               className="mt-8 grid grid-cols-3 gap-4 text-center max-w-xs mx-auto lg:max-w-none"
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
               transition={Spring.smooth(0.8, 0.8)}
             >
               {[
@@ -315,9 +315,9 @@ export function Hero() {
                 { value: '3', label: 'Themes', delay: 1.1 },
               ].map((stat) => (
                 <m.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  key={stat.label}
                   transition={Spring.smooth(0.5, stat.delay)}
                   whileHover={{ scale: 1.05 }}
                 >

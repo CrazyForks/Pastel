@@ -15,20 +15,20 @@ export function MainSections() {
     <>
       {/* Color Palette Section */}
       <m.section
-        id="palette"
         className="py-16 sm:py-24 lg:py-32 border-t border-border"
+        id="palette"
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
         transition={Spring.smooth(0.8)}
         viewport={{ once: true, margin: '-100px' }}
+        whileInView={{ opacity: 1, y: 0 }}
       >
         <Container>
           <m.div
             className="max-w-2xl mb-16"
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
             transition={Spring.smooth(0.6, 0.2)}
             viewport={{ once: true }}
+            whileInView={{ opacity: 1, y: 0 }}
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
               Color palette
@@ -39,9 +39,9 @@ export function MainSections() {
           </m.div>
           <m.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
             transition={Spring.smooth(0.8, 0.4)}
             viewport={{ once: true }}
+            whileInView={{ opacity: 1, y: 0 }}
           >
             <ColorGrid />
           </m.div>
@@ -50,9 +50,9 @@ export function MainSections() {
         <m.div
           className="hidden xl:block px-8 max-w-[1440px] mx-auto my-32"
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
           transition={Spring.smooth(0.8, 0.6)}
           viewport={{ once: true, margin: '-100px' }}
+          whileInView={{ opacity: 1, y: 0 }}
         >
           <h2 className="text-3xl text-center sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
             Color explorer
@@ -66,20 +66,20 @@ export function MainSections() {
 
       {/* Contrast Demo Section */}
       <m.section
-        id="contrast"
         className="py-16 sm:py-24 lg:py-32 border-t border-border"
+        id="contrast"
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
         transition={Spring.smooth(0.8)}
         viewport={{ once: true, margin: '-100px' }}
+        whileInView={{ opacity: 1, y: 0 }}
       >
         <Container>
           <m.div
             className="max-w-2xl mb-16"
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
             transition={Spring.smooth(0.6, 0.2)}
             viewport={{ once: true }}
+            whileInView={{ opacity: 1, y: 0 }}
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
               Contrast levels
@@ -91,9 +91,9 @@ export function MainSections() {
           </m.div>
           <m.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
             transition={Spring.smooth(0.8, 0.4)}
             viewport={{ once: true }}
+            whileInView={{ opacity: 1, y: 0 }}
           >
             <ContrastDemo />
           </m.div>
@@ -102,20 +102,20 @@ export function MainSections() {
 
       {/* Examples Section */}
       <m.section
-        id="examples"
         className="py-16 sm:py-24 lg:py-32 border-t border-border"
+        id="examples"
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
         transition={Spring.smooth(0.8)}
         viewport={{ once: true, margin: '-100px' }}
+        whileInView={{ opacity: 1, y: 0 }}
       >
         <Container>
           <m.div
             className="max-w-2xl mb-16"
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
             transition={Spring.smooth(0.6, 0.2)}
             viewport={{ once: true }}
+            whileInView={{ opacity: 1, y: 0 }}
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
               Component examples
@@ -133,11 +133,11 @@ export function MainSections() {
               { title: 'Alerts', component: <AlertExamples />, delay: 0.6 },
             ].map((section) => (
               <m.div
-                key={section.title}
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                key={section.title}
                 transition={Spring.smooth(0.8, section.delay)}
                 viewport={{ once: true, margin: '-50px' }}
+                whileInView={{ opacity: 1, y: 0 }}
               >
                 <h3 className="text-2xl sm:text-3xl font-bold tracking-tight mb-8">
                   {section.title}

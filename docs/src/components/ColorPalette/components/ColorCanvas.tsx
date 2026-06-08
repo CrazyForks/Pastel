@@ -7,10 +7,10 @@ import type { ColorChannel, ColorVariant } from '../types'
 import { getColorRecommendations } from '../utils/colorRecommendations'
 
 interface ColorCanvasProps {
-  selectedColor: { name: string; category: string; data?: any } | null
-  selectedChannel: ColorChannel
-  selectedVariant: ColorVariant
   onCopy?: (value: string) => void
+  selectedChannel: ColorChannel
+  selectedColor: { name: string; category: string; data?: any } | null
+  selectedVariant: ColorVariant
 }
 
 export function ColorCanvas({
@@ -99,8 +99,8 @@ export function ColorCanvas({
 
           <div className="flex items-center gap-2">
             <CopyButton
-              value={getColorValue(lightColor, selectedChannel)}
               label="Copy Primary"
+              value={getColorValue(lightColor, selectedChannel)}
               variant="primary"
               onCopy={onCopy}
             />
@@ -118,14 +118,14 @@ export function ColorCanvas({
             { id: 'accessibility', label: 'Accessibility', icon: ExternalLink },
           ].map(({ id, label, icon: Icon }) => (
             <button
-              type="button"
               key={id}
-              onClick={() => setActiveTab(id as any)}
+              type="button"
               className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
                 activeTab === id
                   ? 'border-accent text-accent'
                   : 'border-transparent text-text-secondary hover:text-text hover:border-border'
               }`}
+              onClick={() => setActiveTab(id as any)}
             >
               <Icon className="w-4 h-4" />
               {label}
@@ -157,8 +157,8 @@ export function ColorCanvas({
                     </div>
                   </div>
                   <CopyButton
-                    value={getColorValue(lightColor, selectedChannel)}
                     label="Copy"
+                    value={getColorValue(lightColor, selectedChannel)}
                     onCopy={onCopy}
                   />
                 </div>
@@ -179,8 +179,8 @@ export function ColorCanvas({
                       </div>
                     </div>
                     <CopyButton
-                      value={getColorValue(darkColor, selectedChannel)}
                       label="Copy"
+                      value={getColorValue(darkColor, selectedChannel)}
                       onCopy={onCopy}
                     />
                   </div>
@@ -198,8 +198,8 @@ export function ColorCanvas({
 
                     return (
                       <div
-                        key={format}
                         className="flex items-center justify-between p-3 bg-background-secondary border border-border rounded-md"
+                        key={format}
                       >
                         <div className="flex-1">
                           <div className="text-sm font-medium">
@@ -210,8 +210,8 @@ export function ColorCanvas({
                           </div>
                         </div>
                         <CopyButton
-                          value={value}
                           label="Copy"
+                          value={value}
                           onCopy={onCopy}
                         />
                       </div>
@@ -237,11 +237,11 @@ export function ColorCanvas({
                     </div>
                   </div>
                   <CopyButton
+                    label="Copy"
                     value={`--color-${name}: ${getColorValue(
                       lightColor,
                       selectedChannel,
                     )};`}
-                    label="Copy"
                     onCopy={onCopy}
                   />
                 </div>
@@ -257,8 +257,8 @@ export function ColorCanvas({
                     </div>
                   </div>
                   <CopyButton
-                    value={`bg-${name}`}
                     label="Copy"
+                    value={`bg-${name}`}
                     onCopy={onCopy}
                   />
                 </div>
@@ -274,11 +274,11 @@ export function ColorCanvas({
                     </div>
                   </div>
                   <CopyButton
+                    label="Copy"
                     value={`"${name}": "${getColorValue(
                       lightColor,
                       selectedChannel,
                     )}"`}
-                    label="Copy"
                     onCopy={onCopy}
                   />
                 </div>
@@ -327,8 +327,8 @@ export function ColorCanvas({
                       This is colored text using {name}
                     </p>
                     <a
-                      href="#"
                       className="text-sm underline"
+                      href="#"
                       style={{ color: lightColor?.srgb || lightColor?.oklch }}
                     >
                       This is a colored link

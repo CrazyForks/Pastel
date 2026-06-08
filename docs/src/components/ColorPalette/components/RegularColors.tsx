@@ -11,12 +11,11 @@ import { parseOKLCH } from '../utils/colorUtils'
 import { ColorCard } from './ColorCard'
 
 interface RegularColorsProps {
-  selectedVariant: ColorVariant
-  sortOrder: SortOrder
-  selectedChannel: ColorChannel
   onColorClick: (colorName: string, type: ColorCategory, data?: any) => void
   onCopy: (value: string) => void
-  
+  selectedChannel: ColorChannel
+  selectedVariant: ColorVariant
+  sortOrder: SortOrder
 }
 
 export const RegularColors: React.FC<RegularColorsProps> = ({
@@ -25,7 +24,6 @@ export const RegularColors: React.FC<RegularColorsProps> = ({
   selectedChannel,
   onColorClick,
   onCopy,
-  
 }) => {
   const getColorsByVariant = () => {
     switch (selectedVariant) {
@@ -93,13 +91,12 @@ export const RegularColors: React.FC<RegularColorsProps> = ({
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
       {sortedColors.map(([name, variants]) => (
         <ColorCard
-          key={name}
           colorName={name}
-          variants={variants}
+          key={name}
           selectedChannel={selectedChannel}
+          variants={variants}
           onClick={() => onColorClick(name, 'regular')}
           onCopy={onCopy}
-          
         />
       ))}
     </div>

@@ -4,8 +4,8 @@ import { CopyButton } from '../ui/CopyButton'
 export const InstallSection = () => {
   return (
     <section
-      id="installation"
       className="py-16 sm:py-24 lg:py-32 border-t border-border"
+      id="installation"
     >
       <Container>
         <div className="max-w-4xl">
@@ -45,9 +45,9 @@ export const InstallSection = () => {
                       </div>
                     </div>
                     <CopyButton
-                      variant="icon"
                       label="Copy npm install"
                       value="npm install @pastel-palette/tailwindcss"
+                      variant="icon"
                     />
                   </div>
                   <div className="p-4 bg-gradient-to-br from-material-thin/20 to-material-thin/10">
@@ -79,9 +79,9 @@ export const InstallSection = () => {
                       </div>
                     </div>
                     <CopyButton
-                      variant="icon"
                       label="Copy pnpm install"
                       value="pnpm add @pastel-palette/tailwindcss"
+                      variant="icon"
                     />
                   </div>
                   <div className="p-4 bg-gradient-to-br from-material-thin/20 to-material-thin/10">
@@ -125,9 +125,9 @@ export const InstallSection = () => {
                       </div>
                     </div>
                     <CopyButton
-                      variant="icon"
                       label="Copy OKLCH import"
                       value="@import '@pastel-palette/tailwindcss/dist/theme-oklch.css';"
+                      variant="icon"
                     />
                   </div>
                   <div className="p-4 bg-gradient-to-br from-material-thin/20 to-material-thin/10">
@@ -160,9 +160,9 @@ export const InstallSection = () => {
                       </div>
                     </div>
                     <CopyButton
-                      variant="icon"
                       label="Copy sRGB import"
                       value="@import '@pastel-palette/tailwindcss/dist/theme-srgb.css';"
+                      variant="icon"
                     />
                   </div>
                   <div className="p-4 bg-gradient-to-br from-material-thin/20 to-material-thin/10">
@@ -194,9 +194,9 @@ export const InstallSection = () => {
                       </div>
                     </div>
                     <CopyButton
-                      variant="icon"
                       label="Copy P3 import"
                       value="@import '@pastel-palette/tailwindcss/dist/theme-p3.css';"
+                      variant="icon"
                     />
                   </div>
                   <div className="p-4 bg-gradient-to-br from-material-thin/20 to-material-thin/10">
@@ -250,8 +250,8 @@ export const InstallSection = () => {
                         </span>
                       </div>
                       <CopyButton
-                        variant="icon"
                         label="Copy CSS Variables"
+                        variant="icon"
                         value={`
 .button {
 background-color: var(--color-accent);
@@ -362,8 +362,8 @@ color: var(--color-text);
                         </span>
                       </div>
                       <CopyButton
-                        variant="icon"
                         label="Copy JSX with TailwindCSS Classes"
+                        variant="icon"
                         value={`// Using semantic colors
 <button className="bg-accent text-white border border-border hover:opacity-90">
 Click me
@@ -479,8 +479,8 @@ Click me
                         </span>
                       </div>
                       <CopyButton
-                        variant="icon"
                         label="Copy PostCSS with @apply"
+                        variant="icon"
                         value={`.btn-primary {
 @apply bg-accent text-white border border-border;
 @apply hover:opacity-90 focus:ring-2 focus:ring-accent;

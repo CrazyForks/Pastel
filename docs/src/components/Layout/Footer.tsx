@@ -24,8 +24,8 @@ export function Footer() {
             <a
               className="hover:underline decoration-accent"
               href="https://innei.in"
-              target="_blank"
               rel="noopener noreferrer"
+              target="_blank"
             >
               Innei
             </a>
@@ -49,16 +49,16 @@ export function Footer() {
             />
             {themeOptions.map((option) => (
               <button
-                type="button"
+                aria-label={`Switch to ${option.label} theme`}
                 key={option.value}
-                onClick={() => setTheme(option.value)}
+                title={option.label}
+                type="button"
                 className={`relative z-10 p-2 rounded-full transition-colors ${
                   theme === option.value
                     ? 'text-text'
                     : 'text-text-secondary hover:text-text'
                 }`}
-                aria-label={`Switch to ${option.label} theme`}
-                title={option.label}
+                onClick={() => setTheme(option.value)}
               >
                 <option.icon className="w-4 h-4" />
               </button>

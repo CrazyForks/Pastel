@@ -5,11 +5,10 @@ import type { ColorCategory, ColorChannel, ColorVariant } from '../types'
 import { ColorCard } from './ColorCard'
 
 interface ApplicationColorsProps {
-  selectedVariant: ColorVariant
-  selectedChannel: ColorChannel
   onColorClick: (colorName: string, type: ColorCategory, data?: any) => void
   onCopy: (value: string) => void
-  
+  selectedChannel: ColorChannel
+  selectedVariant: ColorVariant
 }
 
 export const ApplicationColors: React.FC<ApplicationColorsProps> = ({
@@ -17,7 +16,6 @@ export const ApplicationColors: React.FC<ApplicationColorsProps> = ({
   selectedChannel,
   onColorClick,
   onCopy,
-  
 }) => {
   const getApplicationColors = () => {
     switch (selectedVariant) {
@@ -52,19 +50,18 @@ export const ApplicationColors: React.FC<ApplicationColorsProps> = ({
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {Object.entries(application).map(([name, variants]) => (
-          <div key={name} className="space-y-3">
+          <div className="space-y-3" key={name}>
             <h4 className="text-sm font-semibold capitalize">{name}</h4>
             <ColorCard
+              aspectRatio="aspect-[3/2]"
               colorName={`application-${name}`}
-              variants={variants}
+              labelContent={renderSampleButton()}
               selectedChannel={selectedChannel}
+              variants={variants}
+              onCopy={onCopy}
               onClick={() =>
                 onColorClick(`application-${name}`, 'application', variants)
               }
-              onCopy={onCopy}
-              
-              aspectRatio="aspect-[3/2]"
-              labelContent={renderSampleButton()}
             />
           </div>
         ))}

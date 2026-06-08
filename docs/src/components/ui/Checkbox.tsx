@@ -6,17 +6,17 @@ import { microReboundPreset } from '../../constants/spring'
 import { cn } from '../../utils/cn'
 
 export interface CheckboxProps {
-  id?: string
   checked?: boolean
-  defaultChecked?: boolean
-  indeterminate?: boolean
-  disabled?: boolean
+  children?: React.ReactNode
   className?: string
+  defaultChecked?: boolean
+  description?: string
+  disabled?: boolean
+  id?: string
+  indeterminate?: boolean
+  onChange?: (checked: boolean) => void
   size?: 'sm' | 'md' | 'lg'
   variant?: 'default' | 'accent' | 'success'
-  onChange?: (checked: boolean) => void
-  children?: React.ReactNode
-  description?: string
 }
 
 const sizeClasses = {
@@ -71,17 +71,20 @@ const CheckboxComponent = ({
   const checkboxElement = (
     <div className="relative">
       <input
-        ref={ref}
-        id={id}
-        type="checkbox"
         checked={checkedValue}
-        disabled={disabled}
-        onChange={handleChange}
         className="sr-only"
+        disabled={disabled}
+        id={id}
+        ref={ref}
+        type="checkbox"
+        onChange={handleChange}
         {...props}
       />
 
       <m.div
+        transition={microReboundPreset}
+        whileHover={disabled ? {} : { scale: 1.05 }}
+        whileTap={disabled ? {} : { scale: 0.95 }}
         className={cn(
           'relative flex items-center justify-center rounded border-2 transition-all duration-200 cursor-pointer',
           sizeClasses[size],
@@ -96,18 +99,15 @@ const CheckboxComponent = ({
           'focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2',
           !children && !description && className,
         )}
-        whileHover={disabled ? {} : { scale: 1.05 }}
-        whileTap={disabled ? {} : { scale: 0.95 }}
-        transition={microReboundPreset}
       >
         {/* Checkmark or indeterminate icon */}
         {isCheckedOrIndeterminate && (
           <m.div
-            initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            transition={microReboundPreset}
             className="flex items-center justify-center"
+            exit={{ scale: 0, opacity: 0 }}
+            initial={{ scale: 0, opacity: 0 }}
+            transition={microReboundPreset}
           >
             {indeterminate ? (
               <Minus className={cn('text-white', iconSizeClasses[size])} />
@@ -129,13 +129,13 @@ const CheckboxComponent = ({
   return (
     <m.label
       htmlFor={id}
+      transition={microReboundPreset}
+      whileHover={disabled ? {} : { x: 2 }}
       className={cn(
         'group flex items-start gap-3 cursor-pointer select-none',
         disabled && 'cursor-not-allowed opacity-50',
         className,
       )}
-      whileHover={disabled ? {} : { x: 2 }}
-      transition={microReboundPreset}
     >
       <div className="flex-shrink-0 pt-0.5">{checkboxElement}</div>
 

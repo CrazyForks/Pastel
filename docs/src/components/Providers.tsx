@@ -15,7 +15,7 @@ const smoothPreset: Transition = {
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    <ThemeProvider defaultTheme="system" disableTransitionOnChange enableSystem>
+    <ThemeProvider disableTransitionOnChange enableSystem defaultTheme="system">
       <LazyMotion features={domAnimation}>
         <MotionConfig transition={smoothPreset}>{children}</MotionConfig>
       </LazyMotion>

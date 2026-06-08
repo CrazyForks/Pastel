@@ -1,4 +1,11 @@
-export type ColorCategory = 'regular' | 'grayScale' | 'element' | 'background' | 'fill' | 'material' | 'application'
+export type ColorCategory =
+  | 'regular'
+  | 'grayScale'
+  | 'element'
+  | 'background'
+  | 'fill'
+  | 'material'
+  | 'application'
 export type ColorVariant = 'regular' | 'high-contrast' | 'kawaii'
 export type SortOrder =
   | 'default'
@@ -10,18 +17,18 @@ export type SortOrder =
 export type ColorChannel = 'oklch' | 'srgb' | 'p3'
 
 export interface ColorSection {
-  id: ColorCategory
-  title: string
   description: string
   icon: React.ReactNode
+  id: ColorCategory
+  title: string
 }
 
 export interface ColorModalProps {
-  isOpen: boolean
-  onClose: () => void
+  colorData: any
   colorName: string
   colorType: ColorCategory
   colorVariant: ColorVariant
-  colorData: any
+  isOpen: boolean
+  onClose: () => void
   onCopy: (value: string) => void
 }

@@ -4,16 +4,16 @@ import * as React from 'react'
 import type { ColorCategory, ColorChannel, ColorVariant } from '../types'
 
 interface GridApplicationColorsProps {
-  selectedVariant: ColorVariant
-  selectedChannel: ColorChannel
   onColorClick: (colorName: string, type: ColorCategory, data?: any) => void
+  selectedChannel: ColorChannel
+  selectedVariant: ColorVariant
 }
 
 interface ApplicationSwatchProps {
   name: string
-  variants: any
-
   onClick: () => void
+
+  variants: any
 }
 
 const ApplicationSwatch: React.FC<ApplicationSwatchProps> = ({
@@ -24,7 +24,7 @@ const ApplicationSwatch: React.FC<ApplicationSwatchProps> = ({
 }) => {
   return (
     <div className="group">
-      <button type="button" className="w-full text-left" onClick={onClick}>
+      <button className="w-full text-left" type="button" onClick={onClick}>
         <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all group-hover:scale-[1.02] border border-border relative">
           {/* Dark variant - bottom right triangle */}
           <div

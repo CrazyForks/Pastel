@@ -1,28 +1,31 @@
 // @ts-check
-import { defineConfig } from 'eslint-config-hyoban'
+import { defineConfig } from '@lobehub/eslint-config'
 
 export default defineConfig(
   {
-    formatting: false,
-    lessOpinionated: true,
-    preferESM: false,
-    react: true,
-    tailwindCSS: false,
+    react: 'vite',
+    typescript: true,
+  },
+  {
+    ignores: ['**/dist/**', '**/build/**', 'docs/public/**'],
   },
   {
     rules: {
+      'no-restricted-syntax': 'off',
+      'react/jsx-sort-props': 'off',
       'unicorn/prefer-math-trunc': 'off',
-      '@eslint-react/no-clone-element': 0,
-      '@eslint-react/hooks-extra/no-direct-set-state-in-use-effect': 0,
-      'no-restricted-syntax': 0,
-      'unicorn/prefer-single-call': 0,
-    },
-  },
-  {
-    files: ['**/*.tsx'],
-    rules: {
-      '@stylistic/jsx-self-closing-comp': 'error',
-      '@eslint-react/no-context-provider': 0,
+      'unicorn/prefer-single-call': 'off',
+      'unicorn/import-style': 'off',
+      'unicorn/text-encoding-identifier-case': 'off',
+      'unicorn/no-array-callback-reference': 'off',
+      'unicorn/no-array-for-each': 'off',
+      '@eslint-react/no-clone-element': 'off',
+      '@eslint-react/no-context-provider': 'off',
+      '@eslint-react/no-nested-component-definitions': 'off',
+      '@eslint-react/no-array-index-key': 'off',
+      '@eslint-react/jsx-no-comment-textnodes': 'off',
+      '@eslint-react/naming-convention/ref-name': 'off',
+      '@eslint-react/hooks-extra/no-direct-set-state-in-use-effect': 'off',
     },
   },
 )

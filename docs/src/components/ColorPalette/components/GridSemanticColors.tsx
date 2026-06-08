@@ -6,11 +6,11 @@ import type { ColorCategory, ColorChannel, ColorVariant } from '../types'
 import { ColorSwatch } from './ColorSwatch'
 
 interface GridSemanticColorsProps {
-  selectedVariant: ColorVariant
-  selectedCategory: ColorCategory
-  selectedChannel?: ColorChannel
   onColorClick: (colorName: string, type: ColorCategory, data?: any) => void
   onCopy?: (value: string) => void
+  selectedCategory: ColorCategory
+  selectedChannel?: ColorChannel
+  selectedVariant: ColorVariant
 }
 
 export const GridSemanticColors: React.FC<GridSemanticColorsProps> = ({
@@ -23,8 +23,8 @@ export const GridSemanticColors: React.FC<GridSemanticColorsProps> = ({
       selectedVariant === 'regular'
         ? 'regular'
         : selectedVariant === 'high-contrast'
-        ? 'high-contrast'
-        : 'kawaii'
+          ? 'high-contrast'
+          : 'kawaii'
     const themeData = colorSystem[variant] || colorSystem.regular
 
     switch (selectedCategory) {
@@ -126,12 +126,12 @@ export const GridSemanticColors: React.FC<GridSemanticColorsProps> = ({
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
         {flattenedColors.map(({ name, variants, icon }) => (
           <ColorSwatch
+            icon={icon}
             key={name}
             name={name}
+            showIcon={true}
             variants={variants}
             onClick={() => onColorClick(name, selectedCategory, variants)}
-            showIcon={true}
-            icon={icon}
           />
         ))}
       </div>

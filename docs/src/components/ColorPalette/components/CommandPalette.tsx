@@ -7,26 +7,26 @@ import { colorSections } from '../utils/constants'
 
 interface CommandPaletteProps {
   isOpen: boolean
+  onCategoryChange?: (category: ColorCategory) => void
   onClose: () => void
   onColorSelect: (name: string, category: ColorCategory, data?: any) => void
-  searchQuery: string
+  onCopy: (value: string) => void
   onSearchChange: (query: string) => void
-  recentColors: string[]
 
+  recentColors: string[]
+  searchQuery: string
   selectedChannel: ColorChannel
   selectedVariant: ColorVariant
-  onCopy: (value: string) => void
-  onCategoryChange?: (category: ColorCategory) => void
 }
 
 interface SearchResult {
-  type: 'color' | 'action' | 'category'
-  name: string
+  action?: () => void
   category?: ColorCategory
   data?: any
   description?: string
-  action?: () => void
+  name: string
   shortcut?: string
+  type: 'color' | 'action' | 'category'
 }
 
 export function CommandPalette({
@@ -65,8 +65,8 @@ export function CommandPalette({
         selectedVariant === 'regular'
           ? 'regular'
           : selectedVariant === 'high-contrast'
-          ? 'high-contrast'
-          : 'kawaii'
+            ? 'high-contrast'
+            : 'kawaii'
       const theme = colorSystem[variant] || colorSystem.regular
 
       const cssLines: string[] = [
@@ -215,8 +215,8 @@ export function CommandPalette({
       selectedVariant === 'regular'
         ? 'regular'
         : selectedVariant === 'high-contrast'
-        ? 'high-contrast'
-        : 'kawaii'
+          ? 'high-contrast'
+          : 'kawaii'
     const regularColorData =
       colorSystem[variant]?.colors || colorSystem.regular.colors
 
@@ -232,7 +232,13 @@ export function CommandPalette({
 
     // Semantic colors
     const themeData = colorSystem[variant] || colorSystem.regular
-    const semanticCategories = ['element', 'background', 'fill', 'material', 'application']
+    const semanticCategories = [
+      'element',
+      'background',
+      'fill',
+      'material',
+      'application',
+    ]
     semanticCategories.forEach((category) => {
       const categoryData = themeData[category as keyof typeof themeData] || {}
       Object.entries(categoryData).forEach(([name, data]) => {
@@ -255,18 +261,19 @@ export function CommandPalette({
 
     if (!query) {
       // Show recent and favorites when no search
-      const results: SearchResult[] = []
+      const results: SearchResult[] = [
+        {
+          type: 'action',
+          name: 'Export colors as CSS',
+          description: 'Download CSS variables for all colors',
+          action: () => {
+            exportAsCSS()
+            onClose()
+          },
+        },
+      ]
 
       // Add quick actions
-      results.push({
-        type: 'action',
-        name: 'Export colors as CSS',
-        description: 'Download CSS variables for all colors',
-        action: () => {
-          exportAsCSS()
-          onClose()
-        },
-      })
 
       // Add recent colors
       recentColors.slice(0, 5).forEach((colorName) => {
@@ -527,12 +534,12 @@ export function CommandPalette({
         <div className="flex items-center gap-3 px-4 py-4 border-b border-border">
           <Search className="w-5 h-5 text-text-secondary" />
           <input
+            className="flex-1 bg-transparent text-lg outline-none placeholder:text-text-secondary"
+            placeholder="Search colors, actions, or type a command..."
             ref={inputRef}
             type="text"
-            placeholder="Search colors, actions, or type a command..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="flex-1 bg-transparent text-lg outline-none placeholder:text-text-secondary"
           />
           <kbd className="px-2 py-1 text-xs bg-background-secondary border border-border rounded">
             ESC
@@ -540,14 +547,14 @@ export function CommandPalette({
         </div>
 
         {/* Results */}
-        <div ref={resultsRef} className="max-h-96 overflow-y-auto">
+        <div className="max-h-96 overflow-y-auto" ref={resultsRef}>
           {results.length > 0 ? (
             <div className="py-2">
               {results.map((result, index) => (
                 <ResultItem
+                  index={index}
                   key={`${result.type}-${result.name}-${index}`}
                   result={result}
-                  index={index}
                 />
               ))}
             </div>

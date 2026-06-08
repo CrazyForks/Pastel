@@ -20,17 +20,17 @@ import { useState } from 'react'
 import { microReboundPreset, softSpringPreset } from '../../constants/spring'
 
 interface AlertProps {
-  variant: 'success' | 'info' | 'warning' | 'error'
-  title: string
-  description: string
   action?: {
     label: string
     onClick: () => void
     variant?: 'primary' | 'secondary'
   }
+  className?: string
+  description: string
   dismissible?: boolean
   onDismiss?: () => void
-  className?: string
+  title: string
+  variant: 'success' | 'info' | 'warning' | 'error'
 }
 
 function Alert({
@@ -87,11 +87,11 @@ function Alert({
 
   return (
     <m.div
-      role="alert"
-      aria-live="polite"
-      initial={{ opacity: 0, y: 8, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
+      aria-live="polite"
       exit={{ opacity: 0, y: -8, scale: 0.98 }}
+      initial={{ opacity: 0, y: 8, scale: 0.98 }}
+      role="alert"
       transition={softSpringPreset}
       className={`
         relative overflow-hidden rounded-lg border shadow-sm
@@ -102,7 +102,7 @@ function Alert({
       <div className="p-4">
         <div className="flex items-start gap-3">
           <div className={`flex-shrink-0 ${config.iconColor}`}>
-            <IconComponent className="w-5 h-5" aria-hidden="true" />
+            <IconComponent aria-hidden="true" className="w-5 h-5" />
           </div>
 
           <div className="flex-1 min-w-0">
@@ -114,8 +114,10 @@ function Alert({
             {action && (
               <div className="mt-3">
                 <m.button
+                  transition={microReboundPreset}
                   type="button"
-                  onClick={action.onClick}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   className={`
                     inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-md
                     transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2
@@ -125,17 +127,15 @@ function Alert({
                             variant === 'success'
                               ? 'bg-green hover:bg-green/90 focus:ring-green'
                               : variant === 'info'
-                              ? 'bg-blue hover:bg-blue/90 focus:ring-blue'
-                              : variant === 'warning'
-                              ? 'bg-yellow hover:bg-yellow/90 focus:ring-yellow'
-                              : 'bg-red hover:bg-red/90 focus:ring-red'
+                                ? 'bg-blue hover:bg-blue/90 focus:ring-blue'
+                                : variant === 'warning'
+                                  ? 'bg-yellow hover:bg-yellow/90 focus:ring-yellow'
+                                  : 'bg-red hover:bg-red/90 focus:ring-red'
                           } text-white`
                         : `border ${config.borderColor} ${config.iconColor} hover:${config.bgColor} focus:${config.ringColor}`
                     }
                   `}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={microReboundPreset}
+                  onClick={action.onClick}
                 >
                   {action.label}
                 </m.button>
@@ -145,13 +145,13 @@ function Alert({
 
           {dismissible && (
             <m.button
-              type="button"
-              onClick={handleDismiss}
-              className="flex-shrink-0 p-1.5 text-text-tertiary hover:text-text-secondary rounded-md hover:bg-background-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-border"
               aria-label="Dismiss alert"
+              className="flex-shrink-0 p-1.5 text-text-tertiary hover:text-text-secondary rounded-md hover:bg-background-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-border"
+              transition={microReboundPreset}
+              type="button"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              transition={microReboundPreset}
+              onClick={handleDismiss}
             >
               <X className="w-4 h-4" />
             </m.button>
@@ -165,8 +165,8 @@ function Alert({
 interface ToastProps {
   icon: React.ComponentType<{ className?: string }>
   message: string
-  variant?: 'success' | 'info' | 'warning' | 'error'
   onDismiss?: () => void
+  variant?: 'success' | 'info' | 'warning' | 'error'
 }
 
 function Toast({
@@ -193,25 +193,25 @@ function Toast({
 
   return (
     <m.div
-      initial={{ opacity: 0, x: 300, scale: 0.9 }}
       animate={{ opacity: 1, x: 0, scale: 1 }}
-      exit={{ opacity: 0, x: 300, scale: 0.9 }}
-      transition={softSpringPreset}
-      className="bg-background border border-border rounded-lg shadow-lg p-3 min-w-[200px]"
-      role="status"
       aria-live="polite"
+      className="bg-background border border-border rounded-lg shadow-lg p-3 min-w-[200px]"
+      exit={{ opacity: 0, x: 300, scale: 0.9 }}
+      initial={{ opacity: 0, x: 300, scale: 0.9 }}
+      role="status"
+      transition={softSpringPreset}
     >
       <div className="flex items-center gap-3">
         <IconComponent className={`w-4 h-4 flex-shrink-0 ${colors[variant]}`} />
         <p className="text-sm font-medium text-text flex-1">{message}</p>
         <m.button
-          type="button"
-          onClick={handleDismiss}
-          className="text-text-tertiary hover:text-text-secondary p-0.5 rounded transition-colors"
           aria-label="Dismiss notification"
+          className="text-text-tertiary hover:text-text-secondary p-0.5 rounded transition-colors"
+          transition={microReboundPreset}
+          type="button"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          transition={microReboundPreset}
+          onClick={handleDismiss}
         >
           <X className="w-3.5 h-3.5" />
         </m.button>
@@ -223,8 +223,8 @@ function Toast({
 interface NotificationBadgeProps {
   children: React.ReactNode
   count: number | string
-  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error'
   max?: number
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error'
 }
 
 function NotificationBadge({
@@ -248,15 +248,15 @@ function NotificationBadge({
     <div className="relative inline-block">
       {children}
       <m.div
-        initial={{ scale: 0 }}
         animate={{ scale: 1 }}
+        aria-label={`${count} notifications`}
+        initial={{ scale: 0 }}
         transition={{ type: 'spring', stiffness: 500, damping: 30 }}
         className={`
           absolute -top-2 -right-2 min-w-[20px] h-5 px-1 
           flex items-center justify-center text-xs font-semibold 
           rounded-full ${colors[variant]}
         `}
-        aria-label={`${count} notifications`}
       >
         {displayCount}
       </m.div>
@@ -265,8 +265,8 @@ function NotificationBadge({
 }
 
 interface StarRatingProps {
-  rating: number
   onRatingChange?: (rating: number) => void
+  rating: number
   readonly?: boolean
 }
 
@@ -278,15 +278,16 @@ function StarRating({
   const [hoveredStar, setHoveredStar] = useState(0)
 
   return (
-    <div className="flex gap-1" role="group" aria-label="Star rating">
+    <div aria-label="Star rating" className="flex gap-1" role="group">
       {[1, 2, 3, 4, 5].map((star) => (
         <m.button
-          key={star}
-          type="button"
+          aria-label={`${star} star${star !== 1 ? 's' : ''}`}
           disabled={readonly}
-          onClick={() => !readonly && onRatingChange?.(star)}
-          onMouseEnter={() => !readonly && setHoveredStar(star)}
-          onMouseLeave={() => !readonly && setHoveredStar(0)}
+          key={star}
+          transition={microReboundPreset}
+          type="button"
+          whileHover={!readonly ? { scale: 1.1 } : {}}
+          whileTap={!readonly ? { scale: 0.95 } : {}}
           className={`
             p-1 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 rounded
             ${readonly ? 'cursor-default' : 'cursor-pointer'}
@@ -298,10 +299,9 @@ function StarRating({
             ${!readonly && 'hover:scale-110'}
             transition-colors
           `}
-          aria-label={`${star} star${star !== 1 ? 's' : ''}`}
-          whileHover={!readonly ? { scale: 1.1 } : {}}
-          whileTap={!readonly ? { scale: 0.95 } : {}}
-          transition={microReboundPreset}
+          onClick={() => !readonly && onRatingChange?.(star)}
+          onMouseEnter={() => !readonly && setHoveredStar(star)}
+          onMouseLeave={() => !readonly && setHoveredStar(0)}
         >
           <Star
             className="w-5 h-5"
@@ -342,51 +342,51 @@ export function AlertExamples() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <Alert
-              variant="success"
-              title="Profile Updated"
+              dismissible
               description="Your profile information has been saved successfully. All changes are now live."
+              title="Profile Updated"
+              variant="success"
               action={{
                 label: 'View Profile',
                 onClick: () => console.info('View profile'),
                 variant: 'primary',
               }}
-              dismissible
             />
 
             <Alert
-              variant="info"
-              title="Feature Update Available"
+              dismissible
               description="We've added support for P3 wide color gamut in our latest release."
+              title="Feature Update Available"
+              variant="info"
               action={{
                 label: 'Learn More',
                 onClick: () => console.info('Learn more'),
                 variant: 'secondary',
               }}
-              dismissible
             />
 
             <Alert
-              variant="warning"
-              title="Storage Limit Approaching"
+              dismissible
               description="You've used 85% of your storage quota. Consider upgrading your plan."
+              title="Storage Limit Approaching"
+              variant="warning"
               action={{
                 label: 'Upgrade Plan',
                 onClick: () => console.info('Upgrade'),
                 variant: 'primary',
               }}
-              dismissible
             />
 
             <Alert
-              variant="error"
-              title="Connection Failed"
+              dismissible
               description="Unable to establish connection to the server. Please check your internet connection."
+              title="Connection Failed"
+              variant="error"
               action={{
                 label: 'Retry Connection',
                 onClick: () => console.info('Retry'),
                 variant: 'primary',
               }}
-              dismissible
             />
           </div>
         </section>
@@ -406,12 +406,12 @@ export function AlertExamples() {
           <div className="space-y-4">
             {/* Special Offer Alert */}
             <m.div
-              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={softSpringPreset}
-              className="relative overflow-hidden rounded-lg border border-purple/20 bg-gradient-to-r from-purple/5 to-pink/5 shadow-sm"
-              role="banner"
               aria-label="Special offer"
+              className="relative overflow-hidden rounded-lg border border-purple/20 bg-gradient-to-r from-purple/5 to-pink/5 shadow-sm"
+              initial={{ opacity: 0, y: 20 }}
+              role="banner"
+              transition={softSpringPreset}
             >
               <div className="p-6">
                 <div className="flex items-center gap-4">
@@ -434,17 +434,17 @@ export function AlertExamples() {
                   <div className="flex gap-3">
                     <m.button
                       className="px-4 py-2 bg-purple text-white rounded-lg font-medium hover:bg-purple/90 focus:outline-none focus:ring-2 focus:ring-purple focus:ring-offset-2 transition-colors"
+                      transition={microReboundPreset}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      transition={microReboundPreset}
                     >
                       Claim Offer
                     </m.button>
                     <m.button
                       className="px-4 py-2 border border-purple/30 text-purple rounded-lg font-medium hover:bg-purple/5 focus:outline-none focus:ring-2 focus:ring-purple focus:ring-offset-2 transition-colors"
+                      transition={microReboundPreset}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      transition={microReboundPreset}
                     >
                       Remind Later
                     </m.button>
@@ -455,10 +455,10 @@ export function AlertExamples() {
 
             {/* Rating Alert */}
             <m.div
-              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ ...softSpringPreset, delay: 0.1 }}
               className="bg-background border border-border rounded-lg shadow-sm p-6"
+              initial={{ opacity: 0, y: 20 }}
+              transition={{ ...softSpringPreset, delay: 0.1 }}
             >
               <div className="flex items-center gap-4">
                 <div className="flex-shrink-0">
@@ -545,8 +545,8 @@ export function AlertExamples() {
             <NotificationBadge count={3} variant="error">
               <m.button
                 className="btn btn-secondary flex items-center gap-2"
-                whileHover={{ scale: 1.02 }}
                 transition={microReboundPreset}
+                whileHover={{ scale: 1.02 }}
               >
                 <MessageSquare className="w-4 h-4" />
                 Messages
@@ -556,8 +556,8 @@ export function AlertExamples() {
             <NotificationBadge count={12} variant="primary">
               <m.button
                 className="btn btn-secondary flex items-center gap-2"
-                whileHover={{ scale: 1.02 }}
                 transition={microReboundPreset}
+                whileHover={{ scale: 1.02 }}
               >
                 <Bell className="w-4 h-4" />
                 Notifications
@@ -567,19 +567,19 @@ export function AlertExamples() {
             <NotificationBadge count="!" variant="success">
               <m.button
                 className="btn btn-secondary flex items-center gap-2"
-                whileHover={{ scale: 1.02 }}
                 transition={microReboundPreset}
+                whileHover={{ scale: 1.02 }}
               >
                 <Gift className="w-4 h-4" />
                 Rewards
               </m.button>
             </NotificationBadge>
 
-            <NotificationBadge count={127} variant="warning" max={99}>
+            <NotificationBadge count={127} max={99} variant="warning">
               <m.button
                 className="btn btn-secondary flex items-center gap-2"
-                whileHover={{ scale: 1.02 }}
                 transition={microReboundPreset}
+                whileHover={{ scale: 1.02 }}
               >
                 <Star className="w-4 h-4" />
                 Favorites
@@ -623,11 +623,11 @@ export function AlertExamples() {
               },
             ].map((status, index) => (
               <m.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ ...softSpringPreset, delay: index * 0.05 }}
                 className="bg-background-secondary border border-border rounded-lg p-3 hover:shadow-sm transition-shadow"
+                initial={{ opacity: 0, y: 20 }}
+                key={index}
+                transition={{ ...softSpringPreset, delay: index * 0.05 }}
               >
                 <div className="flex items-center gap-3">
                   <status.icon
@@ -635,10 +635,10 @@ export function AlertExamples() {
                       status.variant === 'success'
                         ? 'text-green'
                         : status.variant === 'warning'
-                        ? 'text-yellow'
-                        : status.variant === 'info'
-                        ? 'text-blue'
-                        : 'text-red'
+                          ? 'text-yellow'
+                          : status.variant === 'info'
+                            ? 'text-blue'
+                            : 'text-red'
                     }`}
                   />
                   <span className="text-sm font-medium text-text">

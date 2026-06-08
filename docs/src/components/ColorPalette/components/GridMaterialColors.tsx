@@ -5,18 +5,18 @@ import * as React from 'react'
 import type { ColorCategory, ColorChannel, ColorVariant } from '../types'
 
 interface GridMaterialColorsProps {
-  selectedVariant: ColorVariant
-  selectedChannel: ColorChannel
   onColorClick: (colorName: string, type: ColorCategory, data?: any) => void
+  selectedChannel: ColorChannel
+  selectedVariant: ColorVariant
 }
 
 interface MaterialSwatchProps {
-  level: string
-  variants: any
-  selectedChannel: ColorChannel
-  onClick: () => void
-
   isDark: boolean
+  level: string
+  onClick: () => void
+  selectedChannel: ColorChannel
+
+  variants: any
 }
 
 const MaterialSwatch: React.FC<MaterialSwatchProps> = ({
@@ -29,7 +29,7 @@ const MaterialSwatch: React.FC<MaterialSwatchProps> = ({
 }) => {
   return (
     <div className="group">
-      <button type="button" className="w-full text-left" onClick={onClick}>
+      <button className="w-full text-left" type="button" onClick={onClick}>
         <div className="aspect-square rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all group-hover:scale-[1.02] border border-border relative">
           {/* Background pattern to show transparency */}
           <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-blue-400" />
@@ -94,14 +94,14 @@ export const GridMaterialColors: React.FC<GridMaterialColorsProps> = ({
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
         {Object.entries(material).map(([level, variants]) => (
           <MaterialSwatch
-            selectedChannel={selectedChannel}
+            isDark={isDark}
             key={level}
             level={level}
+            selectedChannel={selectedChannel}
             variants={variants}
             onClick={() =>
               onColorClick(`material-${level}`, 'material', variants)
             }
-            isDark={isDark}
           />
         ))}
       </div>

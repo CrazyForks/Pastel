@@ -3,17 +3,17 @@ import { ChevronDown } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
 interface DropdownOption {
-  value: string
-  label: string
   description?: string
+  label: string
+  value: string
 }
 
 interface DropdownProps {
-  options: DropdownOption[]
-  value: string
-  onChange: (value: string) => void
-  placeholder?: string
   className?: string
+  onChange: (value: string) => void
+  options: DropdownOption[]
+  placeholder?: string
+  value: string
 }
 
 export function Dropdown({
@@ -70,24 +70,25 @@ export function Dropdown({
   return (
     <div className={`relative ${className}`}>
       <button
+        className="relative w-full cursor-pointer rounded-md bg-background border border-border py-2 pl-3 pr-10 text-left shadow-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent hover:border-border-secondary transition-colors"
         ref={buttonRef}
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="relative w-full cursor-pointer rounded-md bg-background border border-border py-2 pl-3 pr-10 text-left shadow-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent hover:border-border-secondary transition-colors"
       >
         <span className="block truncate">
           {selectedOption ? selectedOption.label : placeholder}
         </span>
         <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
           <ChevronDown
-            className={`h-4 w-4 text-text-secondary transition-transform ${isOpen ? 'rotate-180' : ''}`}
             aria-hidden="true"
+            className={`h-4 w-4 text-text-secondary transition-transform ${isOpen ? 'rotate-180' : ''}`}
           />
         </span>
       </button>
 
       {isOpen && (
         <Portal.Root
+          className="mt-1 rounded-md bg-background border border-border shadow-xl"
           ref={dropdownRef}
           style={{
             position: 'absolute',
@@ -95,19 +96,18 @@ export function Dropdown({
             left: `${buttonPosition.left}px`,
             width: `${buttonPosition.width}px`,
           }}
-          className="mt-1 rounded-md bg-background border border-border shadow-xl"
         >
           <div className="max-h-60 overflow-auto py-1">
             {options.map((option) => (
               <button
                 key={option.value}
                 type="button"
-                onClick={() => handleSelect(option.value)}
                 className={`relative w-full cursor-pointer select-none py-2 pl-3 pr-9 text-left hover:bg-background-tertiary transition-colors ${
                   option.value === value
                     ? 'bg-accent/10 text-accent font-medium '
                     : 'text-text hover:bg-accent/15'
                 }`}
+                onClick={() => handleSelect(option.value)}
               >
                 <div className="flex flex-col">
                   <span
@@ -125,13 +125,13 @@ export function Dropdown({
                   <span className="absolute inset-y-0 right-0 flex items-center pr-3 text-accent">
                     <svg
                       className="h-4 w-4"
-                      viewBox="0 0 20 20"
                       fill="currentColor"
+                      viewBox="0 0 20 20"
                     >
                       <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                         clipRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        fillRule="evenodd"
                       />
                     </svg>
                   </span>

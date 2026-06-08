@@ -1,11 +1,11 @@
 interface ColorSwatchProps {
+  className?: string
   color: string
   name: string
-  shade?: string
   onClick?: () => void
-  size?: 'sm' | 'md' | 'lg'
+  shade?: string
   showLabel?: boolean
-  className?: string
+  size?: 'sm' | 'md' | 'lg'
 }
 
 export function ColorSwatch({
@@ -25,9 +25,9 @@ export function ColorSwatch({
 
   return (
     <button
-      onClick={onClick}
-      className={`group ${className}`}
       aria-label={`${name} color swatch`}
+      className={`group ${className}`}
+      onClick={onClick}
     >
       <div className="space-y-2">
         <div

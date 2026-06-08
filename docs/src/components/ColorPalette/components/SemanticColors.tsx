@@ -6,11 +6,11 @@ import type { ColorCategory, ColorChannel, ColorVariant } from '../types'
 import { ColorCard } from './ColorCard'
 
 interface SemanticColorsProps {
-  selectedVariant: ColorVariant
-  selectedChannel: ColorChannel
-  selectedCategory: ColorCategory
   onColorClick: (colorName: string, type: ColorCategory, data?: any) => void
   onCopy: (value: string) => void
+  selectedCategory: ColorCategory
+  selectedChannel: ColorChannel
+  selectedVariant: ColorVariant
 }
 
 export const SemanticColors: React.FC<SemanticColorsProps> = ({
@@ -25,8 +25,8 @@ export const SemanticColors: React.FC<SemanticColorsProps> = ({
       selectedVariant === 'regular'
         ? 'regular'
         : selectedVariant === 'high-contrast'
-        ? 'high-contrast'
-        : 'kawaii'
+          ? 'high-contrast'
+          : 'kawaii'
     const themeData = colorSystem[variant] || colorSystem.regular
 
     switch (selectedCategory) {
@@ -76,32 +76,35 @@ export const SemanticColors: React.FC<SemanticColorsProps> = ({
         <div className="space-y-4">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {Object.entries(colorData).map(([type, variants]) => (
-              <div key={type} className="space-y-4">
+              <div className="space-y-4" key={type}>
                 <h5 className="text-sm font-medium capitalize">
                   {type.replaceAll(/([A-Z])/g, ' $1')}
                 </h5>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                   {typeof variants === 'object' && 'light' in variants ? (
                     <ColorCard
-                      colorName={type}
-                      variants={variants}
-                      selectedChannel={selectedChannel}
-                      onClick={() =>
-                        onColorClick(type, selectedCategory, variants)
-                      }
-                      onCopy={onCopy}
                       aspectRatio="aspect-[4/3]"
+                      colorName={type}
+                      selectedChannel={selectedChannel}
+                      variants={variants}
                       labelContent={
                         type.includes('text') ? renderTextLabel() : null
+                      }
+                      onCopy={onCopy}
+                      onClick={() =>
+                        onColorClick(type, selectedCategory, variants)
                       }
                     />
                   ) : (
                     Object.entries(variants).map(([level, colorVariants]) => (
                       <ColorCard
-                        key={`${type}-${level}`}
+                        aspectRatio="aspect-[4/3]"
                         colorName={`${type}-${level}`}
-                        variants={colorVariants}
+                        key={`${type}-${level}`}
+                        labelContent={renderColorLabel()}
                         selectedChannel={selectedChannel}
+                        variants={colorVariants}
+                        onCopy={onCopy}
                         onClick={() =>
                           onColorClick(
                             `${type}-${level}`,
@@ -109,9 +112,6 @@ export const SemanticColors: React.FC<SemanticColorsProps> = ({
                             colorVariants,
                           )
                         }
-                        onCopy={onCopy}
-                        aspectRatio="aspect-[4/3]"
-                        labelContent={renderColorLabel()}
                       />
                     ))
                   )}

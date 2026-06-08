@@ -1,51 +1,51 @@
-import type { ColorSystem, DarkModeConfig } from './index';
+import type { ColorSystem, DarkModeConfig } from './index'
 
 export interface OKLCH {
-  l: number;
-  c: number;
-  h: number;
-  a?: number;
+  a?: number
+  c: number
+  h: number
+  l: number
 }
 
 export interface RGB {
-  r: number;
-  g: number;
-  b: number;
-  a?: number;
+  a?: number
+  b: number
+  g: number
+  r: number
 }
 
 export interface ColorValidationResult {
-  valid: boolean;
-  errors: string[];
-  warnings: string[];
+  errors: string[]
+  valid: boolean
+  warnings: string[]
 }
 
 export interface ContrastRatio {
-  ratio: number;
   passes: {
-    aa: boolean;
-    aaa: boolean;
-    largeTextAa: boolean;
-    largeTextAaa: boolean;
-  };
+    aa: boolean
+    aaa: boolean
+    largeTextAa: boolean
+    largeTextAaa: boolean
+  }
+  ratio: number
 }
 
-export type ColorFormat = 'oklch' | 'srgb' | 'p3' | 'hex';
+export type ColorFormat = 'oklch' | 'srgb' | 'p3' | 'hex'
 
 export interface ColorConversionOptions {
-  format: ColorFormat;
-  fallback?: boolean;
-  precision?: number;
+  fallback?: boolean
+  format: ColorFormat
+  precision?: number
 }
 
 export interface GeneratorConfig {
-  colors: ColorSystem;
-  darkMode?: DarkModeConfig;
-  prefix?: string;
+  colors: ColorSystem
+  darkMode?: DarkModeConfig
   formatOptions?: {
-    colorSpace?: ColorFormat;
-    includeP3?: boolean;
-    includeFallbacks?: boolean;
-    precision?: number;
-  };
+    colorSpace?: ColorFormat
+    includeP3?: boolean
+    includeFallbacks?: boolean
+    precision?: number
+  }
+  prefix?: string
 }

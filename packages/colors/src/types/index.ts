@@ -1,7 +1,7 @@
 export interface ColorValue {
   oklch: string
-  srgb: string
   p3?: string
+  srgb: string
 }
 
 /**
@@ -10,8 +10,8 @@ export interface ColorValue {
 export type ColorInput = string
 
 export interface ColorVariants {
-  light: ColorValue
   dark: ColorValue
+  light: ColorValue
 }
 
 export type DepthLevel =
@@ -23,10 +23,10 @@ export type DepthLevel =
 
 export interface SemanticColor {
   primary?: ColorVariants
-  secondary?: ColorVariants
-  tertiary?: ColorVariants
   quaternary?: ColorVariants
   quinary?: ColorVariants
+  secondary?: ColorVariants
+  tertiary?: ColorVariants
 }
 
 export type MaterialOpacity =
@@ -38,15 +38,15 @@ export type MaterialOpacity =
   | 'opaque'
 
 export interface MaterialColor {
-  light: ColorValue
   dark: ColorValue
+  light: ColorValue
 }
 
 export type DarkModeStrategy = 'media-query' | 'class' | 'data-attribute'
 
 export interface DarkModeConfig {
-  strategy: DarkModeStrategy
   selector?: string
+  strategy: DarkModeStrategy
 }
 
 export type RegularColorName =
@@ -100,19 +100,19 @@ export type ApplicationColorName = 'accent' | 'primary' | 'secondary'
 export type ThemeName = 'regular' | 'kawaii' | 'high-contrast'
 
 export interface ThemeColorSystem {
-  colors: Record<RegularColorName, ColorVariants>
-  grayScale: Record<GrayScaleColorName, ColorVariants>
-  element: Record<ElementColorName, SemanticColor>
-  background: SemanticColor
-  fill: SemanticColor
-  material: Record<MaterialOpacity, MaterialColor>
   application: Record<ApplicationColorName, ColorVariants>
+  background: SemanticColor
+  colors: Record<RegularColorName, ColorVariants>
+  element: Record<ElementColorName, SemanticColor>
+  fill: SemanticColor
+  grayScale: Record<GrayScaleColorName, ColorVariants>
+  material: Record<MaterialOpacity, MaterialColor>
 }
 
 export interface ColorSystem {
-  regular: ThemeColorSystem
-  kawaii: ThemeColorSystem
   'high-contrast': ThemeColorSystem
+  kawaii: ThemeColorSystem
+  regular: ThemeColorSystem
 }
 
 export interface ColorPalette {

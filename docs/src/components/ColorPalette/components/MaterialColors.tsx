@@ -6,11 +6,10 @@ import type { ColorCategory, ColorChannel, ColorVariant } from '../types'
 import { ColorCard } from './ColorCard'
 
 interface MaterialColorsProps {
-  selectedVariant: ColorVariant
-  selectedChannel: ColorChannel
   onColorClick: (colorName: string, type: ColorCategory, data?: any) => void
   onCopy: (value: string) => void
-  
+  selectedChannel: ColorChannel
+  selectedVariant: ColorVariant
 }
 
 export const MaterialColors: React.FC<MaterialColorsProps> = ({
@@ -18,7 +17,6 @@ export const MaterialColors: React.FC<MaterialColorsProps> = ({
   selectedChannel,
   onColorClick,
   onCopy,
-  
 }) => {
   const getMaterialColors = () => {
     switch (selectedVariant) {
@@ -57,15 +55,10 @@ export const MaterialColors: React.FC<MaterialColorsProps> = ({
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
         {Object.entries(material).map(([level, variants]) => (
           <ColorCard
-            key={`material-${level}`}
             colorName={`material-${level}`}
-            variants={variants}
+            key={`material-${level}`}
             selectedChannel={selectedChannel}
-            onClick={() =>
-              onColorClick(`material-${level}`, 'material', variants)
-            }
-            onCopy={onCopy}
-            
+            variants={variants}
             labelContent={
               <div className="relative w-full h-full">
                 {/* Background pattern to show transparency */}
@@ -85,6 +78,10 @@ export const MaterialColors: React.FC<MaterialColorsProps> = ({
                   {renderLevelLabel(level)}
                 </div>
               </div>
+            }
+            onCopy={onCopy}
+            onClick={() =>
+              onColorClick(`material-${level}`, 'material', variants)
             }
           />
         ))}

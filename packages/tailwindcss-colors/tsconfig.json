@@ -1,28 +1,16 @@
 {
   "compilerOptions": {
     "strict": true,
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
     "allowJs": true,
     "esModuleInterop": true,
-    "lib": [
-      "ESNext"
-    ],
-    "types": [
-      "node"
-    ],
-    "moduleResolution": "node",
+    "lib": ["ESNext"],
+    "types": ["node"],
+    "moduleResolution": "bundler",
     "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "target": "ESNext",
     "module": "ESNext"
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "include": ["**/*.ts", "**/*.tsx"]
 }

@@ -6,10 +6,10 @@ import { parseOKLCH } from '../utils/colorUtils'
 import { ColorSwatch } from './ColorSwatch'
 
 interface GridRegularColorsProps {
-  selectedVariant: ColorVariant
-  sortOrder: SortOrder
-
   onColorClick: (colorName: string, type: ColorCategory, data?: any) => void
+  selectedVariant: ColorVariant
+
+  sortOrder: SortOrder
 }
 
 export const GridRegularColors: React.FC<GridRegularColorsProps> = ({
@@ -81,9 +81,9 @@ export const GridRegularColors: React.FC<GridRegularColorsProps> = ({
         <ColorSwatch
           key={name}
           name={name}
+          showIcon={false}
           variants={variants}
           onClick={() => onColorClick(name, 'regular', variants)}
-          showIcon={false}
         />
       ))}
     </div>

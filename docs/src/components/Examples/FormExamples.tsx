@@ -58,9 +58,9 @@ export function FormExamples() {
       <div className="space-y-12">
         {/* Basic Form Elements - Enhanced layout and spacing */}
         <m.div
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={softSpringPreset}
         >
           <div className="flex items-center gap-3">
@@ -72,15 +72,15 @@ export function FormExamples() {
             {/* Left Column */}
             <div className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="name" className="flex items-center gap-2 ml-3">
+                <Label className="flex items-center gap-2 ml-3" htmlFor="name">
                   Your Name
                   <span className="text-red text-xs">*</span>
                 </Label>
                 <Input
-                  id="name"
-                  type="text"
-                  placeholder="Enter your name..."
                   className="transition-all duration-200 focus:scale-[1.01]"
+                  id="name"
+                  placeholder="Enter your name..."
+                  type="text"
                 />
                 <p className="text-xs text-text-tertiary ml-3">
                   This will be displayed on your profile
@@ -88,15 +88,15 @@ export function FormExamples() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="flex items-center gap-2 ml-3">
+                <Label className="flex items-center gap-2 ml-3" htmlFor="email">
                   Email Address
                   <span className="text-red text-xs">*</span>
                 </Label>
                 <Input
-                  id="email"
-                  type="email"
-                  placeholder="your@email.com"
                   className="transition-all duration-200 focus:scale-[1.01]"
+                  id="email"
+                  placeholder="your@email.com"
+                  type="email"
                 />
                 <p className="text-xs text-text-tertiary ml-3">
                   We'll never share your email
@@ -104,13 +104,13 @@ export function FormExamples() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="color" className="ml-3">
+                <Label className="ml-3" htmlFor="color">
                   Favorite Color
                 </Label>
                 <Select>
                   <SelectTrigger
-                    id="color"
                     className="transition-all duration-200 hover:border-border-secondary !mt-1"
+                    id="color"
                   >
                     <SelectValue placeholder="Choose your favorite..." />
                   </SelectTrigger>
@@ -131,14 +131,14 @@ export function FormExamples() {
             {/* Right Column */}
             <div className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="message" className="ml-3">
+                <Label className="ml-3" htmlFor="message">
                   Message
                 </Label>
                 <Textarea
+                  className="transition-all duration-200 focus:scale-[1.01] resize-none !mt-1"
                   id="message"
                   placeholder="Tell us something..."
                   rows={4}
-                  className="transition-all duration-200 focus:scale-[1.01] resize-none !mt-1"
                 />
                 <div className="flex justify-between text-xs text-text-tertiary ml-3">
                   <span>Share your thoughts with us</span>
@@ -167,12 +167,12 @@ export function FormExamples() {
                     },
                   ].map(({ key, label, desc }) => (
                     <Checkbox
-                      key={key}
-                      id={key}
+                      className="p-3 rounded-lg hover:bg-background-secondary transition-all duration-200"
                       description={desc}
+                      id={key}
+                      key={key}
                       size="md"
                       variant="accent"
-                      className="p-3 rounded-lg hover:bg-background-secondary transition-all duration-200"
                     >
                       {label}
                     </Checkbox>
@@ -185,9 +185,9 @@ export function FormExamples() {
 
         {/* Radio Buttons - Enhanced with better visual feedback */}
         <m.div
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ ...softSpringPreset, delay: 0.1 }}
         >
           <div className="flex items-center gap-3">
@@ -208,22 +208,22 @@ export function FormExamples() {
                 {plans.map((plan) => (
                   <m.label
                     key={plan.id}
+                    transition={microReboundPreset}
+                    whileHover={{ y: -2, scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     className={`relative card p-5 cursor-pointer text-center transition-all duration-200 ${
                       selectedPlan === plan.id
                         ? 'border-accent bg-accent/5 shadow-lg shadow-accent/10'
                         : 'hover:border-border-secondary hover:shadow-md'
                     }`}
-                    whileHover={{ y: -2, scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={microReboundPreset}
                   >
                     <input
-                      type="radio"
-                      name="plan"
-                      value={plan.id}
                       checked={selectedPlan === plan.id}
-                      onChange={(e) => setSelectedPlan(e.target.value)}
                       className="sr-only"
+                      name="plan"
+                      type="radio"
+                      value={plan.id}
+                      onChange={(e) => setSelectedPlan(e.target.value)}
                     />
 
                     {plan.popular && (
@@ -246,10 +246,10 @@ export function FormExamples() {
 
                     {selectedPlan === plan.id && (
                       <m.div
-                        initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        transition={microReboundPreset}
                         className="absolute bottom-2 right-2"
+                        initial={{ scale: 0 }}
+                        transition={microReboundPreset}
                       >
                         <Check className="w-4 h-4 text-accent" />
                       </m.div>
@@ -263,9 +263,9 @@ export function FormExamples() {
 
         {/* Range Sliders - Enhanced with better labels and feedback */}
         <m.div
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ ...softSpringPreset, delay: 0.2 }}
         >
           <div className="flex items-center gap-3">
@@ -276,19 +276,19 @@ export function FormExamples() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="card p-6 space-y-4">
               <div className="flex items-center justify-between">
-                <Label htmlFor="volume" className="text-sm font-medium">
+                <Label className="text-sm font-medium" htmlFor="volume">
                   Volume
                 </Label>
                 <span className="text-xs text-text-tertiary">Audio level</span>
               </div>
               <Slider
+                showValue
+                className="w-full"
                 defaultValue={[75]}
+                id="volume"
                 max={100}
                 step={1}
-                className="w-full"
-                showValue
                 valueFormatter={(value) => `${value}%`}
-                id="volume"
               />
               <div className="flex justify-between text-xs text-text-tertiary">
                 <span>Quiet</span>
@@ -298,7 +298,7 @@ export function FormExamples() {
 
             <div className="card p-6 space-y-4">
               <div className="flex items-center justify-between">
-                <Label htmlFor="brightness" className="text-sm font-medium">
+                <Label className="text-sm font-medium" htmlFor="brightness">
                   Brightness
                 </Label>
                 <span className="text-xs text-text-tertiary">
@@ -306,13 +306,13 @@ export function FormExamples() {
                 </span>
               </div>
               <Slider
+                showValue
+                className="w-full"
                 defaultValue={[50]}
+                id="brightness"
                 max={100}
                 step={1}
-                className="w-full"
-                showValue
                 valueFormatter={(value) => `${value}%`}
-                id="brightness"
               />
               <div className="flex justify-between text-xs text-text-tertiary">
                 <span>Dark</span>
@@ -324,9 +324,9 @@ export function FormExamples() {
 
         {/* File Upload - Enhanced with drag and drop feedback */}
         <m.div
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ ...softSpringPreset, delay: 0.3 }}
         >
           <div className="flex items-center gap-3">
@@ -335,24 +335,24 @@ export function FormExamples() {
           </div>
 
           <m.div
+            transition={microReboundPreset}
+            whileHover={{ y: -2 }}
             className={`border-2 border-dashed rounded-lg p-8 cursor-pointer text-center transition-all duration-200 ${
               isDragOver
                 ? 'border-accent bg-accent/5 scale-[1.02]'
                 : 'border-border hover:border-border-secondary hover:bg-background-secondary'
             }`}
-            onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
+            onDragOver={handleDragOver}
             onDrop={handleDrop}
-            whileHover={{ y: -2 }}
-            transition={microReboundPreset}
           >
             <div className="space-y-4">
               <m.div
+                animate={isDragOver ? { scale: [1, 1.1, 1] } : {}}
+                transition={{ duration: 0.3 }}
                 className={`transition-colors duration-200 ${
                   isDragOver ? 'text-accent' : 'text-text-secondary'
                 }`}
-                animate={isDragOver ? { scale: [1, 1.1, 1] } : {}}
-                transition={{ duration: 0.3 }}
               >
                 <CloudUpload className="w-12 h-12 mx-auto" />
               </m.div>
@@ -372,9 +372,9 @@ export function FormExamples() {
               {!isDragOver && (
                 <m.button
                   className="btn btn-primary"
+                  transition={microReboundPreset}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  transition={microReboundPreset}
                 >
                   Choose Files
                 </m.button>
@@ -385,9 +385,9 @@ export function FormExamples() {
 
         {/* Form Actions - Enhanced with better hierarchy */}
         <m.div
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ ...softSpringPreset, delay: 0.4 }}
         >
           <div className="flex items-center gap-3">
@@ -398,26 +398,26 @@ export function FormExamples() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <m.button
               className="btn btn-primary px-8 py-3 font-medium text-base min-w-[120px]"
+              transition={microReboundPreset}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              transition={microReboundPreset}
             >
               Submit Form
             </m.button>
             <div className="flex gap-3">
               <m.button
                 className="btn btn-secondary px-6 py-2 font-medium"
+                transition={microReboundPreset}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                transition={microReboundPreset}
               >
                 Save Draft
               </m.button>
               <m.button
                 className="btn btn-secondary px-6 py-2 font-medium text-text-secondary"
+                transition={microReboundPreset}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                transition={microReboundPreset}
               >
                 Reset Form
               </m.button>
@@ -427,9 +427,9 @@ export function FormExamples() {
 
         {/* Validation States - Enhanced with better visual feedback */}
         <m.div
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
           transition={{ ...softSpringPreset, delay: 0.5 }}
         >
           <div className="flex items-center gap-3">
@@ -440,27 +440,27 @@ export function FormExamples() {
           <m.div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <m.div
               className="space-y-2"
-              whileHover={{ y: -2 }}
               transition={microReboundPreset}
+              whileHover={{ y: -2 }}
             >
               <Label
-                htmlFor="valid-input"
                 className="flex items-center gap-2 text-green"
+                htmlFor="valid-input"
               >
                 <Check className="w-4 h-4" />
                 Valid Input
               </Label>
               <Input
+                readOnly
+                className="border-green focus:border-green focus:ring-green bg-green/5"
                 id="valid-input"
                 type="text"
                 value="john.doe@example.com"
-                className="border-green focus:border-green focus:ring-green bg-green/5"
-                readOnly
               />
               <m.p
+                animate={{ opacity: 1, x: 0 }}
                 className="text-xs text-green flex items-center gap-2 mt-2"
                 initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
                 transition={microReboundPreset}
               >
                 <Check className="w-3 h-3" />
@@ -470,27 +470,27 @@ export function FormExamples() {
 
             <m.div
               className="space-y-2"
-              whileHover={{ y: -2 }}
               transition={microReboundPreset}
+              whileHover={{ y: -2 }}
             >
               <Label
-                htmlFor="warning-input"
                 className="flex items-center gap-2 text-yellow"
+                htmlFor="warning-input"
               >
                 <AlertCircle className="w-4 h-4" />
                 Warning Input
               </Label>
               <Input
+                readOnly
+                className="border-yellow focus:border-yellow focus:ring-yellow bg-yellow/5"
                 id="warning-input"
                 type="text"
                 value="example@gmail"
-                className="border-yellow focus:border-yellow focus:ring-yellow bg-yellow/5"
-                readOnly
               />
               <m.p
+                animate={{ opacity: 1, x: 0 }}
                 className="text-xs text-yellow flex items-center gap-2 mt-2"
                 initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
                 transition={{ ...microReboundPreset, delay: 0.1 }}
               >
                 <AlertCircle className="w-3 h-3" />
@@ -500,27 +500,27 @@ export function FormExamples() {
 
             <m.div
               className="space-y-2"
-              whileHover={{ y: -2 }}
               transition={microReboundPreset}
+              whileHover={{ y: -2 }}
             >
               <Label
-                htmlFor="error-input"
                 className="flex items-center gap-2 text-red"
+                htmlFor="error-input"
               >
                 <X className="w-4 h-4" />
                 Error Input
               </Label>
               <Input
+                readOnly
+                className="border-red focus:border-red focus:ring-red bg-red/5"
                 id="error-input"
                 type="text"
                 value="invalid-email"
-                className="border-red focus:border-red focus:ring-red bg-red/5"
-                readOnly
               />
               <m.p
+                animate={{ opacity: 1, x: 0 }}
                 className="text-xs text-red flex items-center gap-2 mt-2"
                 initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
                 transition={{ ...microReboundPreset, delay: 0.2 }}
               >
                 <X className="w-3 h-3" />

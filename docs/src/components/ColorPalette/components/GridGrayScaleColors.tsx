@@ -4,9 +4,9 @@ import { useMemo } from 'react'
 import type { ColorCategory, ColorVariant } from '../types'
 
 interface GridGrayScaleColorsProps {
-  selectedVariant: ColorVariant
-  selectedChannel: 'oklch' | 'srgb' | 'p3'
   onColorClick: (colorName: string, type: ColorCategory, data?: any) => void
+  selectedChannel: 'oklch' | 'srgb' | 'p3'
+  selectedVariant: ColorVariant
 }
 
 export function GridGrayScaleColors({
@@ -19,8 +19,8 @@ export function GridGrayScaleColors({
       selectedVariant === 'regular'
         ? 'regular'
         : selectedVariant === 'high-contrast'
-        ? 'high-contrast'
-        : 'kawaii'
+          ? 'high-contrast'
+          : 'kawaii'
 
     const themeData = colorSystem[variant]
     return themeData?.grayScale || {}

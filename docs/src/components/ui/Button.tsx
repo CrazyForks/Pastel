@@ -5,14 +5,14 @@ import { microReboundPreset } from '../../constants/spring'
 import { cn } from '../../utils/cn'
 
 interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'ghost'
-  size?: 'sm' | 'md' | 'lg'
   asChild?: boolean
   children?: ReactNode
   className?: string
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   disabled?: boolean
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  size?: 'sm' | 'md' | 'lg'
   type?: 'button' | 'submit' | 'reset'
+  variant?: 'primary' | 'secondary' | 'ghost'
 }
 
 export const Button = ({
@@ -52,9 +52,9 @@ export const Button = ({
         <m.a
           {...child.props}
           className={cn(buttonClasses, child.props.className)}
+          transition={microReboundPreset}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          transition={microReboundPreset}
         >
           {child.props.children}
         </m.a>
@@ -64,11 +64,11 @@ export const Button = ({
 
   return (
     <m.button
-      ref={ref}
       className={buttonClasses}
+      ref={ref}
+      transition={microReboundPreset}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      transition={microReboundPreset}
       {...props}
     >
       {children}

@@ -14,12 +14,12 @@ import { colorSections } from '../utils/constants'
 
 // Types
 interface ColorData {
-  light: {
+  dark: {
     oklch: string
     srgb: string
     p3?: string
   }
-  dark: {
+  light: {
     oklch: string
     srgb: string
     p3?: string
@@ -49,8 +49,8 @@ const getVariantData = (selectedVariant: ColorVariant) => {
     selectedVariant === 'regular'
       ? 'regular'
       : selectedVariant === 'high-contrast'
-      ? 'high-contrast'
-      : 'kawaii'
+        ? 'high-contrast'
+        : 'kawaii'
   return colorSystem[variant] || colorSystem.regular
 }
 
@@ -80,40 +80,40 @@ const flattenNestedColors = (
 
 // ColorSidebar Context
 interface SelectedColor {
-  name: string
   category: ColorCategory
   data?: ColorData
+  name: string
 }
 
 interface ColorSidebarContextType {
-  // Props from parent
-  selectedCategory: ColorCategory
-  selectedColor: SelectedColor | null
-  searchQuery: string
+  filterColors: (colors: [string, ColorData][]) => [string, ColorData][]
+  getApplicationColors: () => [string, ColorData][]
+  getBackgroundColors: () => [string, ColorData][]
 
-  selectedVariant: ColorVariant
-  selectedChannel: ColorChannel
-  sortOrder: SortOrder
+  getElementColors: () => [string, ColorData][]
+  getFillColors: () => [string, ColorData][]
+  getGrayScaleColors: () => [string, ColorData][]
 
+  getMaterialColors: () => [string, ColorData][]
+  // Methods
+  getRegularColors: () => [string, ColorData][]
   // Event handlers
   onCategoryChange: (category: ColorCategory) => void
+
   onColorSelect: (
     name: string,
     category: ColorCategory,
     data?: ColorData,
   ) => void
   onSearchChange: (query: string) => void
-
-  // Methods
-  getRegularColors: () => [string, ColorData][]
-  getGrayScaleColors: () => [string, ColorData][]
-  getElementColors: () => [string, ColorData][]
-  getBackgroundColors: () => [string, ColorData][]
-  getFillColors: () => [string, ColorData][]
-  getMaterialColors: () => [string, ColorData][]
-  getApplicationColors: () => [string, ColorData][]
-  filterColors: (colors: [string, ColorData][]) => [string, ColorData][]
+  searchQuery: string
+  // Props from parent
+  selectedCategory: ColorCategory
+  selectedChannel: ColorChannel
+  selectedColor: SelectedColor | null
+  selectedVariant: ColorVariant
   sortColors: (colors: [string, ColorData][]) => [string, ColorData][]
+  sortOrder: SortOrder
 }
 
 const ColorSidebarContext = createContext<ColorSidebarContextType>(
@@ -123,10 +123,6 @@ const ColorSidebarContext = createContext<ColorSidebarContextType>(
 // ColorSidebar Provider
 interface ColorSidebarProviderProps {
   children: ReactNode
-  selectedCategory: ColorCategory
-  selectedColor: SelectedColor | null
-  searchQuery: string
-
   onCategoryChange: (category: ColorCategory) => void
   onColorSelect: (
     name: string,
@@ -134,8 +130,12 @@ interface ColorSidebarProviderProps {
     data?: ColorData,
   ) => void
   onSearchChange: (query: string) => void
-  selectedVariant: ColorVariant
+
+  searchQuery: string
+  selectedCategory: ColorCategory
   selectedChannel: ColorChannel
+  selectedColor: SelectedColor | null
+  selectedVariant: ColorVariant
   sortOrder: SortOrder
 }
 
@@ -342,9 +342,9 @@ const ColorSidebarProvider = ({
 
 // ColorItem Component
 interface ColorItemProps {
-  name: string
-  data: ColorData
   category: ColorCategory
+  data: ColorData
+  name: string
 }
 
 const ColorItem = ({ name, data, category }: ColorItemProps) => {
@@ -408,14 +408,14 @@ const ColorItem = ({ name, data, category }: ColorItemProps) => {
 
 // CategoryHeader Component
 interface CategorySection {
+  icon: ReactNode
   id: ColorCategory
   title: string
-  icon: ReactNode
 }
 
 interface CategoryHeaderProps {
-  section: CategorySection
   colorCount: number
+  section: CategorySection
 }
 
 const CategoryHeader = ({ section, colorCount }: CategoryHeaderProps) => {
@@ -466,11 +466,11 @@ const SearchBar = () => {
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-text-secondary" />
         <input
-          type="text"
+          className="w-full pl-10 pr-4 py-2 text-sm bg-background-secondary border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
           placeholder="Search colors..."
+          type="text"
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full pl-10 pr-4 py-2 text-sm bg-background-secondary border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
         />
       </div>
     </div>
@@ -534,10 +534,10 @@ const ColorCategories = () => {
         const colorCount = colors.length
 
         return (
-          <div key={section.id} className="space-y-1">
+          <div className="space-y-1" key={section.id}>
             <CategoryHeader
-              section={section as CategorySection}
               colorCount={colorCount}
+              section={section as CategorySection}
             />
 
             {selectedCategory === section.id && (
@@ -546,10 +546,10 @@ const ColorCategories = () => {
                   .sortColors(contextValue.filterColors(colors))
                   .map(([name, data]) => (
                     <ColorItem
+                      category={section.id as ColorCategory}
+                      data={data}
                       key={name}
                       name={name}
-                      data={data}
-                      category={section.id as ColorCategory}
                     />
                   ))}
               </div>
@@ -563,10 +563,6 @@ const ColorCategories = () => {
 
 // Main ColorSidebar Component
 interface ColorSidebarProps {
-  selectedCategory: ColorCategory
-  selectedColor: SelectedColor | null
-  searchQuery: string
-
   onCategoryChange: (category: ColorCategory) => void
   onColorSelect: (
     name: string,
@@ -574,8 +570,12 @@ interface ColorSidebarProps {
     data?: ColorData,
   ) => void
   onSearchChange: (query: string) => void
-  selectedVariant: ColorVariant
+
+  searchQuery: string
+  selectedCategory: ColorCategory
   selectedChannel: ColorChannel
+  selectedColor: SelectedColor | null
+  selectedVariant: ColorVariant
   sortOrder: SortOrder
 }
 

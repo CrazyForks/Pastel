@@ -21,8 +21,8 @@ export function ColorDetails({ colorName, onCopy }: ColorDetailsProps) {
           <h4 className="text-sm font-medium">Light Variant</h4>
           <div className="space-y-1">
             <button
-              onClick={() => onCopy(colorVariants.light.oklch)}
               className="w-full text-left p-2 rounded border border-border hover:bg-muted transition-colors"
+              onClick={() => onCopy(colorVariants.light.oklch)}
             >
               <div className="flex justify-between items-center">
                 <span className="text-xs font-medium">OKLCH</span>
@@ -32,8 +32,8 @@ export function ColorDetails({ colorName, onCopy }: ColorDetailsProps) {
               </div>
             </button>
             <button
-              onClick={() => onCopy(colorVariants.light.srgb)}
               className="w-full text-left p-2 rounded border border-border hover:bg-muted transition-colors"
+              onClick={() => onCopy(colorVariants.light.srgb)}
             >
               <div className="flex justify-between items-center">
                 <span className="text-xs font-medium">sRGB</span>
@@ -44,8 +44,8 @@ export function ColorDetails({ colorName, onCopy }: ColorDetailsProps) {
             </button>
             {colorVariants.light.p3 && (
               <button
-                onClick={() => onCopy(colorVariants.light.p3!)}
                 className="w-full text-left p-2 rounded border border-border hover:bg-muted transition-colors"
+                onClick={() => onCopy(colorVariants.light.p3!)}
               >
                 <div className="flex justify-between items-center">
                   <span className="text-xs font-medium">P3</span>
@@ -62,8 +62,8 @@ export function ColorDetails({ colorName, onCopy }: ColorDetailsProps) {
           <h4 className="text-sm font-medium">Dark Variant</h4>
           <div className="space-y-1">
             <button
-              onClick={() => onCopy(colorVariants.dark.oklch)}
               className="w-full text-left p-2 rounded border border-border hover:bg-muted transition-colors"
+              onClick={() => onCopy(colorVariants.dark.oklch)}
             >
               <div className="flex justify-between items-center">
                 <span className="text-xs font-medium">OKLCH</span>
@@ -73,8 +73,8 @@ export function ColorDetails({ colorName, onCopy }: ColorDetailsProps) {
               </div>
             </button>
             <button
-              onClick={() => onCopy(colorVariants.dark.srgb)}
               className="w-full text-left p-2 rounded border border-border hover:bg-muted transition-colors"
+              onClick={() => onCopy(colorVariants.dark.srgb)}
             >
               <div className="flex justify-between items-center">
                 <span className="text-xs font-medium">sRGB</span>
@@ -85,8 +85,8 @@ export function ColorDetails({ colorName, onCopy }: ColorDetailsProps) {
             </button>
             {colorVariants.dark.p3 && (
               <button
-                onClick={() => onCopy(colorVariants.dark.p3!)}
                 className="w-full text-left p-2 rounded border border-border hover:bg-muted transition-colors"
+                onClick={() => onCopy(colorVariants.dark.p3!)}
               >
                 <div className="flex justify-between items-center">
                   <span className="text-xs font-medium">P3</span>

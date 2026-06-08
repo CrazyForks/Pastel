@@ -63,10 +63,10 @@ export function ContrastDemo() {
       <div className="flex flex-wrap gap-3">
         {contrastOptions.map((option) => (
           <Button
+            className="flex-1 min-w-fit"
             key={option.value}
             variant={contrastLevel === option.value ? 'primary' : 'secondary'}
             onClick={() => setContrastLevel(option.value)}
-            className="flex-1 min-w-fit"
           >
             {option.label}
           </Button>
@@ -99,10 +99,10 @@ export function ContrastDemo() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {demoColors.map((color, index) => (
               <m.div
-                key={`${color}-${contrastLevel}`}
+                animate={{ opacity: 1, scale: 1 }}
                 className="space-y-2"
                 initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
+                key={`${color}-${contrastLevel}`}
                 transition={Spring.smooth(0.3, index * 0.05)}
               >
                 <div
@@ -133,8 +133,8 @@ export function ContrastDemo() {
                 </div>
                 <div className="flex gap-3 flex-wrap">
                   <Button
-                    variant="secondary"
                     className="border-red text-red hover:bg-red/10"
+                    variant="secondary"
                   >
                     Destructive
                   </Button>
@@ -152,9 +152,9 @@ export function ContrastDemo() {
                     Text Input
                   </label>
                   <input
-                    type="text"
-                    placeholder="Enter text..."
                     className="w-full px-3 py-2 border border-border rounded-md bg-background text-text placeholder:text-text-tertiary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                    placeholder="Enter text..."
+                    type="text"
                   />
                 </div>
                 <div>
@@ -177,7 +177,7 @@ export function ContrastDemo() {
                 <p className="text-text">Primary text content</p>
                 <p className="text-text-secondary">Secondary text content</p>
                 <p className="text-text-tertiary">Tertiary text content</p>
-                <a href="#" className="text-link hover:text-link-hover">
+                <a className="text-link hover:text-link-hover" href="#">
                   Link text
                 </a>
               </div>

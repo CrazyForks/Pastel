@@ -6,18 +6,18 @@ import { Modal } from '../ui/Modal'
 import type { ColorCategory, ColorVariant } from './types'
 
 interface ColorModalProps {
-  isOpen: boolean
-  onClose: () => void
+  colorData?: any
   colorName: string
   colorType: ColorCategory
   colorVariant: ColorVariant
-  colorData?: any
+  isOpen: boolean
+  onClose: () => void
   onCopy: (value: string) => void
 }
 
 interface ColorInfo {
-  usage: string
   pairsWith: string
+  usage: string
 }
 
 const colorInfoMap: Record<string, ColorInfo> = {
@@ -131,9 +131,9 @@ export function ColorModal({
         <span className="text-sm font-medium text-text-secondary">{label}</span>
       </div>
       <button
+        className="w-full select-all text-left p-3 overflow-x-auto rounded-md border border-border hover:border-border-secondary hover:bg-background-secondary transition-all duration-200"
         type="button"
         onClick={() => handleCopy(value)}
-        className="w-full select-all text-left p-3 overflow-x-auto rounded-md border border-border hover:border-border-secondary hover:bg-background-secondary transition-all duration-200"
       >
         <pre className="text-sm font-mono text-text">
           <code className="mr-3">{value}</code>
@@ -144,14 +144,14 @@ export function ColorModal({
 
   return (
     <Modal
+      isOpen={isOpen}
+      size="lg"
       title={`${colorName.toLocaleUpperCase()} - ${
         colorType === 'regular'
           ? colorVariant.replace('-', ' ').toUpperCase()
           : colorType.toUpperCase()
       }`}
-      isOpen={isOpen}
       onClose={onClose}
-      size="lg"
     >
       {colorVariants && (
         <div className="space-y-6">
