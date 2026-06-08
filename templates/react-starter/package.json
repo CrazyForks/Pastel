@@ -1,0 +1,50 @@
+{
+  "name": "pastel-react-starter",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "dev": "vite",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@pastel-palette/colors": "^1.0.0-canary.3",
+    "@pastel-palette/tailwindcss": "^1.0.0-canary.3",
+    "clsx": "^2.1.1",
+    "jotai": "^2.20.0",
+    "lucide-react": "^1.17.0",
+    "next-themes": "^0.4.6",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-router": "^7.17.0",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@lobehub/eslint-config": "^2.1.5",
+    "@lobehub/prettier-config": "^2.1.5",
+    "@rolldown/plugin-babel": "^0.2.3",
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/babel__core": "^7.20.5",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "code-inspector-plugin": "^1.5.3",
+    "eslint": "^9.31.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-packagejson": "^2.5.22",
+    "prettier-plugin-sh": "^0.14.0",
+    "prettier-plugin-sort-json": "^4.2.0",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.16",
+    "vite-plugin-route-builder": "^0.4.1"
+  },
+  "packageManager": "pnpm@11.5.2"
+}

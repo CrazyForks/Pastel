@@ -7,7 +7,7 @@ export default defineConfig(
     typescript: true,
   },
   {
-    ignores: ['**/dist/**', '**/build/**', 'docs/public/**'],
+    ignores: ['**/dist/**', '**/build/**', 'docs/public/**', 'templates/**'],
   },
   {
     rules: {

@@ -246,6 +246,16 @@ The pastel palette aesthetic emphasizes:
 - WCAG AAA compliant contrast ratios
 - Enhanced accessibility for visually impaired users
 
+## Starter Templates
+
+Scaffold a new React app pre-wired with Vite 8, React Compiler, file-based routes, and the Pastel theme:
+
+```sh
+pnpm dlx degit Innei/Pastel/templates/react-starter my-app
+```
+
+See [`templates/react-starter`](./templates/react-starter) for details.
+
 ## License
 
 2025 © Innei, Released under the MIT License.
