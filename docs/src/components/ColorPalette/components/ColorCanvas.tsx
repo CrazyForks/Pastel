@@ -298,7 +298,7 @@ export function ColorCanvas({
                   <h4 className="text-sm font-medium">Buttons</h4>
                   <div className="flex gap-3">
                     <button
-                      className="px-4 py-2 text-sm font-medium text-white rounded-md"
+                      className="h-7 px-2.5 text-[13px] font-medium text-white rounded-md"
                       style={{
                         background: lightColor?.srgb || lightColor?.oklch,
                       }}
@@ -306,7 +306,7 @@ export function ColorCanvas({
                       Primary Button
                     </button>
                     <button
-                      className="px-4 py-2 text-sm font-medium border rounded-md"
+                      className="h-7 px-2.5 text-[13px] font-medium border rounded-md"
                       style={{
                         color: lightColor?.srgb || lightColor?.oklch,
                         borderColor: lightColor?.srgb || lightColor?.oklch,

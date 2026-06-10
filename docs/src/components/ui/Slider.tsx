@@ -3,8 +3,9 @@ import * as React from 'react'
 
 import { cn } from '../../utils/cn'
 
-interface SliderProps
-  extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> {
+interface SliderProps extends React.ComponentPropsWithoutRef<
+  typeof SliderPrimitive.Root
+> {
   showValue?: boolean
   valueFormatter?: (value: number) => string
 }
@@ -46,10 +47,10 @@ const Slider = ({
         {...props}
         onValueChange={handleValueChange}
       >
-        <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-background-secondary border border-border">
+        <SliderPrimitive.Track className="relative h-1.5 w-full grow overflow-hidden rounded-full bg-background-secondary border border-border">
           <SliderPrimitive.Range className="absolute h-full bg-accent" />
         </SliderPrimitive.Track>
-        <SliderPrimitive.Thumb className="block h-5 w-5 rounded-full border-2 border-white bg-accent shadow-lg ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:scale-110 active:scale-95" />
+        <SliderPrimitive.Thumb className="block h-4 w-4 rounded-full border-2 border-white bg-accent shadow-md transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 disabled:pointer-events-none disabled:opacity-50" />
       </SliderPrimitive.Root>
       {showValue && (
         <div className="flex justify-center">

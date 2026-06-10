@@ -19,7 +19,7 @@ export const Tooltip = ({ children, title, side = 'top', delay = 400 }: TooltipP
       <TooltipPrimitive.Positioner className="z-50" side={side} sideOffset={6}>
         <TooltipPrimitive.Popup
           className={cn(
-            'rounded-md bg-text px-2.5 py-1 text-xs text-background shadow-md',
+            'rounded-md bg-text px-2 py-1 text-xs text-background shadow-md',
             popupTransitionClassName,
           )}
         >

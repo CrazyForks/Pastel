@@ -7,7 +7,6 @@ import {
   ModalBackdrop,
   ModalClose,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalPopup,
   ModalPortal,
@@ -114,8 +113,10 @@ const ConfirmBody = ({ config }: { config: ModalConfirmConfig }) => {
 
   return (
     <>
-      {config.content && <div className="text-sm text-text-secondary">{config.content}</div>}
-      <ModalFooter className="-mx-4 -mb-3 mt-3 px-0 pb-0">
+      {config.content && (
+        <div className="text-[13px] text-text-secondary">{config.content}</div>
+      )}
+      <div className="mt-3 flex items-center justify-end gap-1.5">
         <Button size="sm" variant="secondary" onClick={handleCancel}>
           {config.cancelText ?? 'Cancel'}
         </Button>
@@ -127,7 +128,7 @@ const ConfirmBody = ({ config }: { config: ModalConfirmConfig }) => {
         >
           {config.okText ?? 'OK'}
         </Button>
-      </ModalFooter>
+      </div>
     </>
   );
 };

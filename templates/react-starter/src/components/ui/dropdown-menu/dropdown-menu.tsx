@@ -45,9 +45,9 @@ export const DropdownMenu = ({
     <Menu.Portal>
       <Menu.Positioner align={align} side={side} sideOffset={6}>
         <Menu.Popup className={menuPopupClassName}>
-          {header && <div className="border-b border-border px-2.5 py-1.5">{header}</div>}
+          {header && <div className="border-b border-border px-2 py-1">{header}</div>}
           {renderItems(items)}
-          {footer && <div className="border-t border-border px-2.5 py-1.5">{footer}</div>}
+          {footer && <div className="border-t border-border px-2 py-1">{footer}</div>}
         </Menu.Popup>
       </Menu.Positioner>
     </Menu.Portal>

@@ -2,7 +2,7 @@ import { Check, Copy } from 'lucide-react'
 import { m } from 'motion/react'
 import { useCallback, useState } from 'react'
 
-import { microReboundPreset, reboundPreset } from '../../constants/spring'
+import { reboundPreset } from '../../constants/spring'
 
 interface CopyButtonProps {
   label: string
@@ -32,13 +32,10 @@ export function CopyButton({
 
   if (variant === 'icon') {
     return (
-      <m.button
-        className="group flex items-center justify-center p-2 rounded-md border border-border hover:bg-background-tertiary transition-all"
+      <button
+        className="group flex items-center justify-center p-1.5 rounded-md border border-border hover:bg-background-tertiary transition-colors"
         title={`Copy ${label}: ${value}`}
-        transition={microReboundPreset}
         type="button"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
         onClick={handleCopy}
       >
         <m.div
@@ -54,24 +51,21 @@ export function CopyButton({
             <Copy className="w-4 h-4" />
           )}
         </m.div>
-      </m.button>
+      </button>
     )
   }
 
   return (
-    <m.button
-      transition={microReboundPreset}
+    <button
       type="button"
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      className={`group flex items-center gap-2 px-3 py-2 rounded-md border transition-all ${
+      className={`group flex items-center gap-2 h-7 px-2.5 rounded-md border transition-colors ${
         variant === 'primary'
           ? 'bg-accent text-white border-accent hover:bg-accent/90'
           : 'bg-background-secondary border-border hover:bg-background-tertiary'
       }`}
       onClick={handleCopy}
     >
-      <span className="text-sm font-medium">{label}</span>
+      <span className="text-[13px] font-medium">{label}</span>
       <span className="text-xs opacity-95">{value}</span>
       <m.div
         animate={{ scale: 1, opacity: 1 }}
@@ -86,6 +80,6 @@ export function CopyButton({
           <Copy className="w-4 h-4" />
         )}
       </m.div>
-    </m.button>
+    </button>
   )
 }

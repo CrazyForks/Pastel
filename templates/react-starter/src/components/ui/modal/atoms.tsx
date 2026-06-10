@@ -129,13 +129,16 @@ export const ModalPopup = ({ className, style, width, children, ...rest }: Modal
 };
 
 export const ModalHeader = ({ className, ...rest }: HTMLAttributes<HTMLDivElement>) => (
-  <div {...rest} className={cn('flex items-center justify-between px-4 pb-1 pt-3.5', className)} />
+  <div
+    {...rest}
+    className={cn('flex items-center justify-between px-3.5 pb-0.5 pt-3', className)}
+  />
 );
 
 export const ModalTitle = ({ className, ...rest }: React.ComponentProps<typeof Dialog.Title>) => (
   <Dialog.Title
     {...rest}
-    className={cn('text-base font-semibold text-text', className as string)}
+    className={cn('text-sm font-semibold text-text', className as string)}
   />
 );
 
@@ -149,9 +152,9 @@ export const ModalClose = ({
   <Dialog.Close
     {...rest}
     className={cn(
-      'flex size-7 items-center justify-center rounded-full text-text-tertiary',
+      'flex size-6 items-center justify-center rounded-full text-text-tertiary',
       'transition-colors hover:bg-fill-tertiary hover:text-text',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40',
       className as string,
     )}
   >
@@ -160,13 +163,13 @@ export const ModalClose = ({
 );
 
 export const ModalContent = ({ className, ...rest }: HTMLAttributes<HTMLDivElement>) => (
-  <div {...rest} className={cn('overflow-y-auto px-4 py-3 text-sm text-text', className)} />
+  <div {...rest} className={cn('overflow-y-auto px-3.5 py-2.5 text-[13px] text-text', className)} />
 );
 
 export const ModalFooter = ({ className, ...rest }: HTMLAttributes<HTMLDivElement>) => (
   <div
     {...rest}
-    className={cn('flex items-center justify-end gap-2 px-4 pb-3.5 pt-1', className)}
+    className={cn('flex items-center justify-end gap-1.5 px-3.5 pb-3 pt-0.5', className)}
   />
 );
 

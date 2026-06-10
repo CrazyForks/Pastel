@@ -62,8 +62,8 @@ export function Modal({
               >
                 {/* Header */}
                 {title && (
-                  <div className="flex items-center justify-between px-6 py-3 border-b border-border flex-shrink-0">
-                    <Dialog.Title className="text-lg font-semibold text-text">
+                  <div className="flex items-center justify-between px-4 py-2.5 border-b border-border flex-shrink-0">
+                    <Dialog.Title className="text-sm font-semibold text-text">
                       {title}
                     </Dialog.Title>
                     <Dialog.Close asChild>
@@ -71,7 +71,7 @@ export function Modal({
                         className="text-text-secondary hover:text-text transition-colors"
                         type="button"
                       >
-                        <X className="w-5 h-5" />
+                        <X className="w-4 h-4" />
                       </button>
                     </Dialog.Close>
                   </div>
@@ -81,16 +81,16 @@ export function Modal({
                 {!title && (
                   <Dialog.Close asChild>
                     <button
-                      className="absolute right-4 top-4 z-10 text-text-secondary hover:text-text transition-colors p-1"
+                      className="absolute right-3 top-3 z-10 text-text-secondary hover:text-text transition-colors p-1"
                       type="button"
                     >
-                      <X className="w-5 h-5" />
+                      <X className="w-4 h-4" />
                     </button>
                   </Dialog.Close>
                 )}
 
                 {/* Content - with scroll */}
-                <div className={'overflow-y-auto flex-1 p-6'}>{children}</div>
+                <div className={'overflow-y-auto flex-1 p-4'}>{children}</div>
               </motion.div>
             </Dialog.Content>
           </Dialog.Portal>

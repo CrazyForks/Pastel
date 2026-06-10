@@ -21,7 +21,7 @@ const SelectTrigger = ({
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      'flex h-10 w-full items-center justify-between rounded-md border border-border bg-background px-3 py-2 text-sm text-text placeholder:text-text-tertiary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
+      'flex h-7 w-full items-center justify-between rounded-md border border-border bg-background px-2.5 text-[13px] text-text placeholder:text-text-tertiary focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
       className,
     )}
     {...props}
@@ -124,7 +124,7 @@ const SelectLabel = ({
   ref?: React.RefObject<React.ElementRef<typeof SelectPrimitive.Label> | null>
 }) => (
   <SelectPrimitive.Label
-    className={cn('py-1.5 pl-8 pr-2 text-sm font-semibold', className)}
+    className={cn('py-1 pl-7 pr-2 text-xs font-semibold', className)}
     ref={ref}
     {...props}
   />
@@ -142,7 +142,7 @@ const SelectItem = ({
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      'relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent/10 hover:bg-background-secondary focus:text-text data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'relative flex w-full cursor-default select-none items-center rounded-sm py-1 pl-7 pr-2 text-[13px] outline-none focus:bg-accent/10 hover:bg-background-secondary focus:text-text data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className,
     )}
     {...props}

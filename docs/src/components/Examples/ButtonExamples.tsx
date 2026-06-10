@@ -15,7 +15,7 @@ import {
 import { m as motion } from 'motion/react'
 import { useState } from 'react'
 
-import { microReboundPreset, softSpringPreset } from '../../constants/spring'
+import { softSpringPreset } from '../../constants/spring'
 import { cn } from '../../utils/cn'
 
 interface ButtonProps {
@@ -42,36 +42,35 @@ function Button({
   ...props
 }: ButtonProps) {
   const baseClasses =
-    'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
+    'inline-flex items-center justify-center font-medium rounded-md transition-[background-color,opacity,border-color] duration-200 focus:outline-none focus-visible:ring-2 disabled:opacity-50 disabled:cursor-not-allowed'
 
   const variants = {
-    primary: 'bg-accent text-white hover:opacity-90 focus:ring-accent',
+    primary:
+      'bg-accent text-white hover:opacity-90 focus-visible:ring-accent/40',
     secondary:
-      'bg-background-secondary text-text border border-border hover:bg-fill focus:ring-accent',
-    outline: 'border border-border text-text hover:bg-fill focus:ring-accent',
-    ghost: 'text-text hover:bg-fill focus:ring-accent',
-    destructive: 'bg-red text-white hover:opacity-90 focus:ring-red',
+      'bg-background-secondary text-text border border-border hover:bg-fill focus-visible:ring-accent/40',
+    outline:
+      'border border-border text-text hover:bg-fill focus-visible:ring-accent/40',
+    ghost: 'text-text hover:bg-fill focus-visible:ring-accent/40',
+    destructive: 'bg-red text-white hover:opacity-90 focus-visible:ring-red/40',
   }
 
   const sizes = {
-    sm: 'text-sm px-3 py-1.5 gap-1.5',
-    md: 'text-sm px-4 py-2 gap-2',
-    lg: 'text-base px-6 py-3 gap-2.5',
+    sm: 'text-xs h-6 px-2 gap-1.5',
+    md: 'text-[13px] h-7 px-2.5 gap-1.5',
+    lg: 'text-sm h-8 px-3.5 gap-2',
   }
 
   const iconSizes = {
-    sm: 'w-3.5 h-3.5',
-    md: 'w-4 h-4',
-    lg: 'w-5 h-5',
+    sm: 'w-3 h-3',
+    md: 'w-3.5 h-3.5',
+    lg: 'w-4 h-4',
   }
 
   return (
-    <motion.button
+    <button
       className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`}
       disabled={disabled || loading}
-      transition={microReboundPreset}
-      whileHover={!disabled && !loading ? { y: -1, scale: 1.02 } : {}}
-      whileTap={!disabled && !loading ? { scale: 0.98 } : {}}
       {...props}
     >
       {loading && <Loader2 className={`${iconSizes[size]} animate-spin`} />}
@@ -82,7 +81,7 @@ function Button({
       {!loading && iconElement && icon === 'right' && (
         <span className={iconSizes[size]}>{iconElement}</span>
       )}
-    </motion.button>
+    </button>
   )
 }
 

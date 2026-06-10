@@ -1,7 +1,5 @@
-import { m } from 'motion/react'
 import type { ReactNode } from 'react'
 
-import { microReboundPreset } from '../../constants/spring'
 import { cn } from '../../utils/cn'
 
 interface ButtonProps {
@@ -27,52 +25,41 @@ export const Button = ({
   const variants = {
     primary: 'bg-accent text-background hover:opacity-90',
     secondary:
-      'bg-background text-text border border-border hover:bg-background-secondary',
+      'bg-background text-text border border-border hover:bg-background-secondary focus-visible:border-accent',
     ghost: 'hover:bg-background-secondary',
   }
 
   const sizes = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2 text-sm',
-    lg: 'px-6 py-3 text-base',
+    sm: 'h-6 px-2 text-xs',
+    md: 'h-7 px-2.5 text-[13px]',
+    lg: 'h-8 px-3.5 text-sm',
   }
 
   const buttonClasses = cn(
-    'inline-flex items-center justify-center font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none',
+    'inline-flex items-center justify-center font-medium rounded-md transition-[background-color,opacity,border-color] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 disabled:opacity-50 disabled:pointer-events-none',
     variants[variant],
     sizes[size],
     className,
   )
 
   if (asChild && children) {
-    // If asChild is true, apply classes to the child element
     const child = children as any
     if (child?.type === 'a') {
       return (
-        <m.a
+        <a
           {...child.props}
           className={cn(buttonClasses, child.props.className)}
-          transition={microReboundPreset}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
         >
           {child.props.children}
-        </m.a>
+        </a>
       )
     }
   }
 
   return (
-    <m.button
-      className={buttonClasses}
-      ref={ref}
-      transition={microReboundPreset}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      {...props}
-    >
+    <button className={buttonClasses} ref={ref} {...props}>
       {children}
-    </m.button>
+    </button>
   )
 }
 

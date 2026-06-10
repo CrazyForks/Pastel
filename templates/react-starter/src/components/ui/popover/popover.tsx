@@ -32,7 +32,7 @@ export const PopoverContent = ({
       <PopoverPrimitive.Popup
         {...props}
         className={cn(
-          'w-72 rounded-lg border border-border bg-background p-4 shadow-lg outline-none',
+          'w-72 rounded-lg border border-border bg-background p-3 shadow-lg outline-none',
           popupTransitionClassName,
           className,
         )}

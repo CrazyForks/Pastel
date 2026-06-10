@@ -12,7 +12,7 @@ export const menuPopupClassName = cn(
 );
 
 export const menuItemClassName = cn(
-  'flex cursor-default select-none items-center gap-2 rounded-md px-2.5 py-1.5 text-sm text-text outline-none',
+  'flex cursor-default select-none items-center gap-2 rounded-md px-2 py-1 text-[13px] text-text outline-none',
   'data-[highlighted]:bg-fill-tertiary data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
 );
 
@@ -22,4 +22,4 @@ export const menuDangerItemClassName = cn(
 
 export const menuSeparatorClassName = 'mx-1 my-1 h-px bg-border';
 
-export const menuGroupLabelClassName = 'px-2.5 py-1.5 text-xs font-medium text-text-tertiary';
+export const menuGroupLabelClassName = 'px-2 py-1 text-[11px] font-medium text-text-tertiary';

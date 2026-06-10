@@ -377,7 +377,7 @@ const ColorItem = ({ name, data, category }: ColorItemProps) => {
 
   return (
     <div
-      className={`group flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors ${
+      className={`group flex items-center gap-2 px-2.5 py-1.5 rounded-md cursor-pointer transition-colors ${
         isSelected ? 'bg-accent text-white' : 'hover:bg-background-secondary'
       }`}
       onClick={handleClick}
@@ -434,7 +434,7 @@ const CategoryHeader = ({ section, colorCount }: CategoryHeaderProps) => {
 
   return (
     <div
-      className={`flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors ${
+      className={`flex items-center gap-2 px-2.5 py-1.5 rounded-md cursor-pointer transition-colors ${
         selectedCategory === section.id
           ? 'bg-accent/10 text-accent'
           : 'hover:bg-background-secondary'

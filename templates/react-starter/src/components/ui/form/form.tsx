@@ -4,7 +4,7 @@ import { Form as FormPrimitive } from '@base-ui/react/form';
 import { cn } from '~/lib/cn';
 
 export const Form = ({ className, ...props }: React.ComponentProps<typeof FormPrimitive>) => (
-  <FormPrimitive {...props} className={cn('flex flex-col gap-4', className as string)} />
+  <FormPrimitive {...props} className={cn('flex flex-col gap-3', className as string)} />
 );
 
 export const FormField = ({ className, ...props }: React.ComponentProps<typeof Field.Root>) => (
@@ -12,7 +12,10 @@ export const FormField = ({ className, ...props }: React.ComponentProps<typeof F
 );
 
 export const FormLabel = ({ className, ...props }: React.ComponentProps<typeof Field.Label>) => (
-  <Field.Label {...props} className={cn('text-sm font-medium text-text', className as string)} />
+  <Field.Label
+    {...props}
+    className={cn('text-[13px] font-medium text-text', className as string)}
+  />
 );
 
 export const FormControl = Field.Control;

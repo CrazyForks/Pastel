@@ -40,8 +40,8 @@ export const Select = <Value extends string = string>({
   >
     <SelectPrimitive.Trigger
       className={cn(
-        'flex h-9 min-w-36 items-center justify-between gap-2 rounded-md border border-border bg-background px-3 text-sm text-text',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+        'flex h-7 min-w-36 items-center justify-between gap-2 rounded-md border border-border bg-background px-2.5 text-[13px] text-text',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:border-accent',
         'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
         'transition-shadow',
         className,

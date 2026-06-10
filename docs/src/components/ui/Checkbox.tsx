@@ -20,15 +20,15 @@ export interface CheckboxProps {
 }
 
 const sizeClasses = {
-  sm: 'w-4 h-4',
-  md: 'w-5 h-5',
-  lg: 'w-6 h-6',
+  sm: 'w-3.5 h-3.5',
+  md: 'w-4 h-4',
+  lg: 'w-5 h-5',
 }
 
 const iconSizeClasses = {
-  sm: 'w-3 h-3',
-  md: 'w-3.5 h-3.5',
-  lg: 'w-4 h-4',
+  sm: 'w-2.5 h-2.5',
+  md: 'w-3 h-3',
+  lg: 'w-3.5 h-3.5',
 }
 
 const CheckboxComponent = ({
@@ -81,12 +81,9 @@ const CheckboxComponent = ({
         {...props}
       />
 
-      <m.div
-        transition={microReboundPreset}
-        whileHover={disabled ? {} : { scale: 1.05 }}
-        whileTap={disabled ? {} : { scale: 0.95 }}
+      <div
         className={cn(
-          'relative flex items-center justify-center rounded border-2 transition-all duration-200 cursor-pointer',
+          'relative flex items-center justify-center rounded border transition-all duration-200 cursor-pointer',
           sizeClasses[size],
           disabled && 'opacity-50 cursor-not-allowed',
           isCheckedOrIndeterminate
@@ -96,7 +93,7 @@ const CheckboxComponent = ({
                 ? 'border-green bg-green'
                 : 'border-foreground bg-foreground'
             : 'border-border bg-background hover:border-border-secondary',
-          'focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2',
+          'focus-within:ring-2 focus-within:ring-accent/40',
           !children && !description && className,
         )}
       >
@@ -116,7 +113,7 @@ const CheckboxComponent = ({
             )}
           </m.div>
         )}
-      </m.div>
+      </div>
     </div>
   )
 
@@ -127,12 +124,10 @@ const CheckboxComponent = ({
 
   // Return checkbox with label wrapper
   return (
-    <m.label
+    <label
       htmlFor={id}
-      transition={microReboundPreset}
-      whileHover={disabled ? {} : { x: 2 }}
       className={cn(
-        'group flex items-start gap-3 cursor-pointer select-none',
+        'group flex items-start gap-2.5 cursor-pointer select-none',
         disabled && 'cursor-not-allowed opacity-50',
         className,
       )}
@@ -144,7 +139,7 @@ const CheckboxComponent = ({
           {children && (
             <span
               className={cn(
-                'text-sm font-medium transition-colors leading-5',
+                'text-[13px] font-medium transition-colors leading-5',
                 disabled
                   ? 'text-text-tertiary'
                   : 'text-text group-hover:text-foreground',
@@ -165,7 +160,7 @@ const CheckboxComponent = ({
           )}
         </div>
       )}
-    </m.label>
+    </label>
   )
 }
 

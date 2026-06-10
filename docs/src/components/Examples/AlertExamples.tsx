@@ -431,23 +431,13 @@ export function AlertExamples() {
                     </p>
                   </div>
 
-                  <div className="flex gap-3">
-                    <m.button
-                      className="px-4 py-2 bg-purple text-white rounded-lg font-medium hover:bg-purple/90 focus:outline-none focus:ring-2 focus:ring-purple focus:ring-offset-2 transition-colors"
-                      transition={microReboundPreset}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
+                  <div className="flex gap-2">
+                    <button className="h-7 px-2.5 text-[13px] bg-purple text-white rounded-md font-medium hover:bg-purple/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple/40 transition-colors">
                       Claim Offer
-                    </m.button>
-                    <m.button
-                      className="px-4 py-2 border border-purple/30 text-purple rounded-lg font-medium hover:bg-purple/5 focus:outline-none focus:ring-2 focus:ring-purple focus:ring-offset-2 transition-colors"
-                      transition={microReboundPreset}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
+                    </button>
+                    <button className="h-7 px-2.5 text-[13px] border border-purple/30 text-purple rounded-md font-medium hover:bg-purple/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple/40 transition-colors">
                       Remind Later
-                    </m.button>
+                    </button>
                   </div>
                 </div>
               </div>

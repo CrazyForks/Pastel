@@ -70,7 +70,7 @@ export function Dropdown({
   return (
     <div className={`relative ${className}`}>
       <button
-        className="relative w-full cursor-pointer rounded-md bg-background border border-border py-2 pl-3 pr-10 text-left shadow-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent hover:border-border-secondary transition-colors"
+        className="relative w-full cursor-pointer rounded-md bg-background border border-border py-1 pl-2.5 pr-8 text-left text-[13px] shadow-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40 hover:border-border-secondary transition-colors"
         ref={buttonRef}
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -102,7 +102,7 @@ export function Dropdown({
               <button
                 key={option.value}
                 type="button"
-                className={`relative w-full cursor-pointer select-none py-2 pl-3 pr-9 text-left hover:bg-background-tertiary transition-colors ${
+                className={`relative w-full cursor-pointer select-none py-1 pl-2.5 pr-8 text-left text-[13px] hover:bg-background-tertiary transition-colors ${
                   option.value === value
                     ? 'bg-accent/10 text-accent font-medium '
                     : 'text-text hover:bg-accent/15'

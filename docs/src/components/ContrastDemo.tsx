@@ -148,20 +148,20 @@ export function ContrastDemo() {
               <h5 className="font-semibold mb-4">Form Elements</h5>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">
+                  <label className="block text-[13px] font-medium mb-1.5">
                     Text Input
                   </label>
                   <input
-                    className="w-full px-3 py-2 border border-border rounded-md bg-background text-text placeholder:text-text-tertiary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                    className="w-full h-7 px-2.5 text-[13px] border border-border rounded-md bg-background text-text placeholder:text-text-tertiary focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent"
                     placeholder="Enter text..."
                     type="text"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">
+                  <label className="block text-[13px] font-medium mb-1.5">
                     Select
                   </label>
-                  <select className="w-full px-3 py-2 border border-border rounded-md bg-background text-text focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent">
+                  <select className="w-full h-7 px-2 text-[13px] border border-border rounded-md bg-background text-text focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent">
                     <option>Option 1</option>
                     <option>Option 2</option>
                     <option>Option 3</option>
