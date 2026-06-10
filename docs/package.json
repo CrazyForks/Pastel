@@ -4,8 +4,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "tsc && vite build && cp -r public/* dist",
-    "clean": "rm -rf dist build",
+    "build": "pnpm build:starter && tsc && vite build && cp -r public/* dist",
+    "build:starter": "cd ../templates/react-starter && npx -y pnpm@11.5.2 install --ignore-workspace && npx vite build --base=/starter/ --outDir ../../docs/public/starter --emptyOutDir",
+    "clean": "rm -rf dist build public/starter",
     "dev": "vite",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"

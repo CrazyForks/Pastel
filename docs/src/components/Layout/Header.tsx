@@ -44,6 +44,12 @@ export function Header() {
               </a>
               <a
                 className="text-sm text-text-secondary hover:text-text transition-colors"
+                href="#starter"
+              >
+                Starter
+              </a>
+              <a
+                className="text-sm text-text-secondary hover:text-text transition-colors"
                 href="#palette"
               >
                 Palette
@@ -145,9 +151,19 @@ export function Header() {
                 <m.a
                   animate={{ opacity: 1, x: 0 }}
                   className="block py-2 text-sm text-text-secondary hover:text-text transition-colors"
-                  href="#palette"
+                  href="#starter"
                   initial={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.3, delay: 0.15 }}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Starter
+                </m.a>
+                <m.a
+                  animate={{ opacity: 1, x: 0 }}
+                  className="block py-2 text-sm text-text-secondary hover:text-text transition-colors"
+                  href="#palette"
+                  initial={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3, delay: 0.18 }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Palette

@@ -6,6 +6,8 @@ Minimal React starter scaffolded with Vite 8 — themed with the Pastel color sy
 
 - **Vite 8** + **React 19** + **TypeScript**
 - **React Compiler** (`babel-plugin-react-compiler`)
+- **Base UI** (`@base-ui/react`) — headless primitives behind the bundled UI kit
+- **motion** via `LazyMotion` (`domAnimation` + `strict`, ~6KB instead of ~30KB)
 - **code-inspector-plugin** — Alt + click any DOM node to open its source in Cursor
 - **vite-plugin-route-builder** — file-based routes from `src/pages/`
 - **TailwindCSS v4** + **@pastel-palette/tailwindcss** theme
@@ -47,6 +49,23 @@ src/
 ```
 
 Path alias: `~` → `./src`.
+
+See [AGENTS.md](./AGENTS.md) for the full file-placement and convention guide (also wired into `CLAUDE.md` for AI coding agents).
+
+## UI components
+
+`src/components/ui/` ships a small kit built on Base UI and styled with Pastel semantic tokens: button, input/textarea, form, modal, dropdown menu, context menu, select, popover, tooltip, toast (sonner). The home page (`src/pages/index.tsx`) demos every one of them.
+
+Modal and context menu also expose imperative APIs (hosts are mounted in `providers.tsx`):
+
+```tsx
+import { confirmModal, createModal } from '~/components/ui/modal'
+import { showContextMenu } from '~/components/ui/context-menu'
+
+createModal({ title: 'Hi', content: <Body /> })
+confirmModal({ title: 'Delete?', danger: true, onOk: async () => api.delete() })
+onContextMenu={(e) => { e.preventDefault(); showContextMenu(items) }}
+```
 
 ## Routing
 

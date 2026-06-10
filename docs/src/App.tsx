@@ -7,6 +7,7 @@ import { Footer } from './components/Layout/Footer'
 import { Header } from './components/Layout/Header'
 import { InstallSection } from './components/Layout/InstallSection'
 import { MainSections } from './components/Layout/MainSections'
+import { StarterTemplateSection } from './components/Layout/StarterTemplateSection'
 
 function App() {
   // Use regular colors - CSS variables will automatically switch to high-contrast when data-contrast-mode="high-contrast"
@@ -21,6 +22,8 @@ function App() {
         <Hero />
 
         <InstallSection />
+
+        <StarterTemplateSection />
 
         <MainSections />
       </main>
